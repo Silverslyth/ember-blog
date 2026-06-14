@@ -1,0 +1,382 @@
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="/guides/stremio-to-nuvio/">Stremio → Nuvio</a>
+  <ul class="nav-links">
+    <li><a href="#install">Install</a></li>
+    <li><a href="#migrate">Migrate</a></li>
+    <li><a href="#addons">Addons</a></li>
+    <li><a href="#debrid">Debrid</a></li>
+    <li><a href="#tools">Tools</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-eyebrow">Migration Guide</div>
+
+  <div class="signal-strip">
+    <span class="signal-label">STREMIO</span>
+    <div class="signal-bar"></div>
+    <span class="signal-label">NUVIO</span>
+  </div>
+
+  <h1>
+    <span class="from">Stremio</span>
+    <span class="arrow">→</span>
+    <span class="to">Nuvio</span>
+  </h1>
+
+  <p class="hero-sub">
+    Everything you need to move your library, addons, and debrid setup from Stremio — without starting from scratch.
+  </p>
+  <div class="hero-meta">
+    <span class="pill">Android TV</span>
+    <span class="pill">WebOS / Tizen</span>
+    <span class="pill">Android Mobile</span>
+    <span class="pill">iOS (Sideload)</span>
+    <span class="pill">Desktop (WIP)</span>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <!-- PHASE 0: What is Nuvio -->
+  <section class="phase" id="what">
+    <div class="phase-tag">Overview</div>
+    <h2>What is Nuvio?</h2>
+    <p class="phase-desc">Before you install anything, here's the quick picture.</p>
+
+    <p>Nuvio is a streaming client built around the same addon ecosystem as Stremio — meaning your Torrentio, Comet, AIOStreams, and debrid integrations all carry over. The main differences you'll notice are a more polished TV-first UI, built-in Collections (curated content rows you define), and tighter debrid integration options. Your addons, your watchlist, your debrid service — none of that changes.</p>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <p><strong>Good to know:</strong> Nuvio uses Stremio-compatible addon URLs. If it works in Stremio, it works in Nuvio. You don't need to reconfigure your debrid credentials or re-install addons from scratch — you just migrate them.</p>
+    </div>
+  </section>
+
+  <!-- PHASE 1: INSTALL -->
+  <section class="phase" id="install">
+    <div class="phase-tag">Phase 1</div>
+    <h2>Install Nuvio</h2>
+    <p class="phase-desc">Pick your device below. Each has a slightly different installation path.</p>
+
+    <div class="tab-group">
+      <div class="tab-buttons">
+        <button class="tab-btn active" onclick="switchTab(event, 'atv')">Android TV</button>
+        <button class="tab-btn" onclick="switchTab(event, 'webos')">WebOS (LG)</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tizen')">Tizen (Samsung)</button>
+        <button class="tab-btn" onclick="switchTab(event, 'android')">Android Mobile</button>
+        <button class="tab-btn" onclick="switchTab(event, 'ios')">iOS</button>
+      </div>
+
+      <div id="atv" class="tab-panel active">
+        <h3>Android TV / Firestick / Shield / Homatics / onn</h3>
+        <ul class="steps">
+          <li><span class="step-num">1</span><p>Open the <strong>Downloader</strong> app on your device (install it from the Play Store / Amazon Appstore if you don't have it).</p></li>
+          <li><span class="step-num">2</span><p>Enter the universal downloader code: <span class="code-block">9919325</span></p></li>
+          <li><span class="step-num">3</span><p>Download and install the APK. You may need to enable <strong>Install from unknown sources</strong> in your device settings.</p></li>
+          <li><span class="step-num">4</span><p>Alternatively, sideload directly from the <a href="https://github.com/NuvioMedia/NuvioTV" style="color:var(--violet)">NuvioTV GitHub releases</a>.</p></li>
+        </ul>
+        <div class="callout note" style="margin-top:1rem">
+          <span class="callout-icon">✓</span>
+          <p>The same APK works across Firestick, Cube, Shield, Homatics, and onn devices.</p>
+        </div>
+      </div>
+
+      <div id="webos" class="tab-panel">
+        <h3>WebOS (LG Smart TVs)</h3>
+        <ul class="steps">
+          <li><span class="step-num">1</span><p>Head to the <a href="https://github.com/NuvioMedia/NuvioWeb" style="color:var(--violet)">NuvioWeb GitHub</a> and follow the WebOS sideload instructions in the README.</p></li>
+          <li><span class="step-num">2</span><p>You'll need your TV in <strong>Developer Mode</strong> — enable it via the LG Developer Mode app on your phone.</p></li>
+          <li><span class="step-num">3</span><p>Use <strong>webOS Dev Manager</strong> or <code>ares-install</code> CLI to push the <code>.ipk</code> to your TV.</p></li>
+        </ul>
+      </div>
+      <div id="tizen" class="tab-panel">
+        <h3>TizenOS (Samsung Smart TVs)</h3>
+        <ul class="steps">
+          <li><span class="step-num">1</span><p>Head to the <a href="https://github.com/NuvioMedia/NuvioWeb" style="color:var(--violet)">NuvioWeb GitHub</a> for the Tizen package.</p></li>
+          <li><span class="step-num">2</span><p>Enable <strong>Developer Mode</strong> on your Samsung TV under Settings → Support → About This TV (tap the version number multiple times).</p></li>
+          <li><span class="step-num">3</span><p>Use <strong>Tizen Studio</strong> or the CLI to deploy the <code>.wgt</code> package to your TV.</p></li>
+        </ul>
+      </div>
+
+      <div id="android" class="tab-panel">
+        <h3>Android Mobile</h3>
+        <ul class="steps">
+          <li><span class="step-num">1</span><p>Download the APK from the <a href="https://github.com/NuvioMedia/NuvioMobile" style="color:var(--violet)">NuvioMobile GitHub</a> releases page.</p></li>
+          <li><span class="step-num">2</span><p>Allow installation from unknown sources in Settings → Apps → Special access.</p></li>
+          <li><span class="step-num">3</span><p>Install and open — the mobile UI is adapted from the TV layout but works well on phones.</p></li>
+        </ul>
+      </div>
+
+      <div id="ios" class="tab-panel">
+        <h3>iOS (Sideload Only)</h3>
+        <div class="callout warn">
+          <span class="callout-icon">⚠️</span>
+          <p>TestFlight is full. Use the direct IPA link below.</p>
+        </div>
+        <ul class="steps">
+          <li><span class="step-num">1</span><p>Download the IPA: <a href="https://github.com/luqmanfadlli/NuvioMobile-iOS/releases/download/0.2.4/Nuvio-v0.2.4-Full.ipa" style="color:var(--violet);font-family:'JetBrains Mono',monospace;font-size:.8rem">Nuvio-v0.2.4-Full.ipa</a></p></li>
+          <li><span class="step-num">2</span><p>Sideload using <strong>AltStore</strong>, <strong>Sideloadly</strong>, or <strong>TrollStore</strong> if your iOS version supports it.</p></li>
+          <li><span class="step-num">3</span><p>Trust the developer certificate under Settings → General → VPN & Device Management.</p></li>
+        </ul>
+        <div class="callout note" style="margin-top:1rem">
+          <span class="callout-icon">✓</span>
+          <p>Also check the <a href="https://github.com/NuvioMedia/NuvioMobile" style="color:var(--violet)">NuvioMobile GitHub</a> for the latest release when the repo updates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 2: MIGRATE LIBRARY -->
+  <section class="phase" id="migrate">
+    <div class="phase-tag">Phase 2</div>
+    <h2>Migrate Your Stremio Library</h2>
+    <p class="phase-desc">Move your watchlist, history, and addon configuration over before you do anything else.</p>
+
+    <div class="card">
+      <div class="card-title">Nuvio Sync — Stremio Library Migration</div>
+      <p>The dedicated migration tool. Connects to your Stremio account and pushes your watchlist and history into your Nuvio account.</p>
+      <p style="margin-top:.5rem"><a href="https://nuviosync.com/" style="color:var(--violet);font-family:'JetBrains Mono',monospace;font-size:.8rem">nuviosync.com →</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Account Cloner</div>
+      <p>Does more than just cloning — also handles addon transfer, account linking, and configuration copying between Stremio and Nuvio accounts.</p>
+      <p style="margin-top:.5rem"><a href="https://nuvio-account-cloner.vercel.app/" style="color:var(--violet);font-family:'JetBrains Mono',monospace;font-size:.8rem">nuvio-account-cloner.vercel.app →</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Account Bootstrapper — Fresh Start</div>
+      <p>If you'd rather start clean than migrate, this sets up a new Nuvio account with sensible defaults and lets you add addons from scratch.</p>
+      <p style="margin-top:.5rem"><a href="https://bootstrapper.stremx.net/" style="color:var(--violet);font-family:'JetBrains Mono',monospace;font-size:.8rem">bootstrapper.stremx.net →</a></p>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <p><strong>Which tool to use?</strong> Use <strong>Nuvio Sync</strong> if you primarily want your watchlist. Use the <strong>Account Cloner</strong> if you also want addons transferred. Use the <strong>Bootstrapper</strong> if you're done with your Stremio history and want a clean slate.</p>
+    </div>
+  </section>
+
+  <!-- PHASE 3: ADDONS -->
+  <section class="phase" id="addons">
+    <div class="phase-tag">Phase 3</div>
+    <h2>Set Up Your Addons</h2>
+    <p class="phase-desc">Nuvio uses the same addon protocol as Stremio. Any addon URL that worked there works here.</p>
+
+    <h3>Recommended Addon Managers</h3>
+    <p>Instead of adding addons one by one, use a manager that handles configuration, deduplication, and ordering for you:</p>
+
+    <ul class="checklist">
+      <li><strong>AIOStreams</strong> — aggregates multiple streaming addons into one. Use Viren's instance or the ElfHosted backup. Handles Torrentio, Comet, Debridio, and more under a single addon URL.</li>
+      <li><strong>Torrentio</strong> — the staple torrent source. Configure it at <a href="https://torrentio.strem.fun" style="color:var(--violet)">torrentio.strem.fun</a> with your debrid credentials and paste the resulting URL into Nuvio.</li>
+      <li><strong>Comet</strong> — a self-hostable alternative to Torrentio with better caching for some debrid services.</li>
+      <li><strong>Fusion</strong> — metadata and discovery addon, pairs well with Cinemeta and Amatsu.</li>
+    </ul>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <p>In Stremio you configured addons by visiting their web UI and clicking "Install." In Nuvio it's the same: generate your configured addon URL, then add it under <strong>Settings → Addons → Add Addon</strong> by pasting the manifest URL.</p>
+    </div>
+
+    <h3>Metadata Addons</h3>
+    <p>Nuvio works with all the standard Stremio metadata addons. Recommended stack:</p>
+
+    <ul class="checklist">
+      <li><strong>Cinemeta</strong> — default catalog and metadata provider for movies and series.</li>
+      <li><strong>AIOMetadata</strong> — aggregated metadata from multiple sources, useful for anime and K-drama.</li>
+      <li><strong>Amatsu</strong> — anime-focused metadata, pairs well with Bingecat for tracking.</li>
+      <li><strong>Trakt</strong> — if you use Trakt for scrobbling and watchlist sync, the Trakt addon works in Nuvio identically to Stremio.</li>
+    </ul>
+
+    <h3>Xperience — Addon Configuration UI</h3>
+    <div class="card">
+      <div class="card-title">Xperience Web Tool</div>
+      <p>A browser-based tool to configure your Nuvio addons and UI layout visually — useful for users who find the in-app settings limiting. <a href="https://www.reddit.com/r/Nuvio/comments/1tqhm9n/built_a_web_tool_to_configure_your_nuvio_and/" style="color:var(--violet)">See the r/Nuvio post</a> for a full explanation of what it can do.</p>
+      <p style="margin-top:.5rem"><a href="https://xperience-app.com/" style="color:var(--violet);font-family:'JetBrains Mono',monospace;font-size:.8rem">xperience-app.com →</a></p>
+    </div>
+  </section>
+
+  <!-- PHASE 4: DEBRID -->
+  <section class="phase" id="debrid">
+    <div class="phase-tag">Phase 4</div>
+    <h2>Connect Your Debrid Service</h2>
+    <p class="phase-desc">Nuvio supports the standard route (via addon like Torrentio) and a direct debrid integration for supported services.</p>
+
+    <h3>Standard Route (via Torrentio / AIOStreams)</h3>
+    <p>This is identical to how you used debrid in Stremio. Configure Torrentio or AIOStreams with your debrid API key, copy the manifest URL, and add it as an addon in Nuvio. No special steps required.</p>
+    <h3>Direct Debrid Integration (TorBox & Premiumize)</h3>
+    <p>Nuvio has a native direct integration for <strong>TorBox</strong> and <strong>Premiumize</strong> that bypasses the addon layer entirely — faster lookups, cleaner stream selection.</p>
+
+    <div class="card">
+      <div class="card-title">Direct Debrid Integration Starter Guide</div>
+      <p>Step-by-step guide for setting up TorBox or Premiumize as a native Nuvio integration, including where to find your API key and how to test it.</p>
+      <p style="margin-top:.5rem"><a href="https://nuvioinstant.3hpm.ca/" style="color:var(--violet);font-family:'JetBrains Mono',monospace;font-size:.8rem">nuvioinstant.3hpm.ca →</a></p>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <p>If you're on TorBox, the direct integration is worth the extra setup step. It gives Nuvio first-class cache lookups rather than routing through a third-party addon URL.</p>
+    </div>
+
+    <h3>AIOStreams + Nuvio Formatting</h3>
+    <div class="card">
+      <div class="card-title">Crispy Duck — AIOStreams / Direct Integration Formatter</div>
+      <p>Formatting tool that helps you correctly structure stream result templates for AIOStreams and Nuvio direct debrid configs. Useful when stream names look wrong or sorting is off.</p>
+      <p style="margin-top:.5rem"><a href="https://crispyduck.xyz/" style="color:var(--violet);font-family:'JetBrains Mono',monospace;font-size:.8rem">crispyduck.xyz →</a></p>
+    </div>
+  </section>
+
+  <!-- PHASE 5: CUSTOMISE -->
+  <section class="phase" id="tools">
+    <div class="phase-tag">Phase 5</div>
+    <h2>Customise: Collections, Badges & More</h2>
+    <p class="phase-desc">Once you're up and running, Nuvio's Collections system and badge customisation are worth exploring.</p>
+
+    <h3>Collections</h3>
+    <p>Collections are curated content rows on your Nuvio home screen — you define them with a <code>.json</code> file. You can browse and add pre-made collections (including cover art) directly from the <a href="https://nuvio.tv" style="color:var(--violet)">official Nuvio website</a>.</p>
+
+    <div class="card">
+      <div class="card-title">Visual .json Collection Editor</div>
+      <p>A GUI editor for building and editing your Nuvio Collections JSON file without touching raw JSON. Drag, drop, and preview your collections layout.</p>
+      <p style="margin-top:.5rem"><a href="https://yaarpatandaraa.github.io/nuvio-collections-editor/" style="color:var(--violet);font-family:'JetBrains Mono',monospace;font-size:.8rem">yaarpatandaraa.github.io/nuvio-collections-editor →</a></p>
+    </div>
+
+    <h3>Badges</h3>
+    <p>Badges are the small metadata overlays on stream results (resolution, codec, HDR, audio format). Nuvio lets you customise these with your own badge URLs.</p>
+
+    <div class="card">
+      <div class="card-title">Badger</div>
+      <p>Generate and configure custom badge sets for your Nuvio streams — pick styles, formats, and icons for resolution, codec, HDR, and audio labels.</p>
+      <p style="margin-top:.5rem"><a href="https://nintle.github.io/Badger/" style="color:var(--violet);font-family:'JetBrains Mono',monospace;font-size:.8rem">nintle.github.io/Badger →</a></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ALL LINKS -->
+    <div class="phase-tag">Quick Reference</div>
+    <h2>All Official Links</h2>
+    <p class="phase-desc">Everything in one place.</p>
+
+    <h3>Official</h3>
+    <div class="link-grid">
+      <a class="link-card" href="https://nuvio.tv" target="_blank">
+        <span class="link-card-label">Nuvio Website</span>
+        <span class="link-card-desc">Browse collections, manage addons, find cover art.</span>
+        <span class="link-card-url">nuvio.tv</span>
+      </a>
+      <a class="link-card" href="https://discord.gg/CEQ773qCk" target="_blank">
+        <span class="link-card-label">Nuvio Discord</span>
+        <span class="link-card-desc">Official support server for help and announcements.</span>
+        <span class="link-card-url">discord.gg/CEQ773qCk</span>
+      </a>
+    </div>
+
+    <h3 style="margin-top:1.5rem">GitHub</h3>
+    <div class="link-grid">
+      <a class="link-card" href="https://github.com/NuvioMedia/NuvioTV" target="_blank">
+        <span class="link-card-label">NuvioTV</span>
+        <span class="link-card-desc">Android TV releases and source.</span>
+        <span class="link-card-url">github.com/NuvioMedia/NuvioTV</span>
+      </a>
+      <a class="link-card" href="https://github.com/NuvioMedia/NuvioWeb" target="_blank">
+        <span class="link-card-label">NuvioWeb</span>
+        <span class="link-card-desc">WebOS (LG) and TizenOS (Samsung) builds.</span>
+        <span class="link-card-url">github.com/NuvioMedia/NuvioWeb</span>
+      </a>
+      <a class="link-card" href="https://github.com/NuvioMedia/NuvioMobile" target="_blank">
+        <span class="link-card-label">NuvioMobile</span>
+        <span class="link-card-desc">Android and iOS mobile releases.</span>
+        <span class="link-card-url">github.com/NuvioMedia/NuvioMobile</span>
+      </a>
+      <a class="link-card" href="https://github.com/NuvioMedia/NuvioDesktop" target="_blank">
+        <span class="link-card-label">NuvioDesktop</span>
+        <span class="link-card-desc">Desktop app — active development, not yet released.</span>
+        <span class="link-card-url">github.com/NuvioMedia/NuvioDesktop</span>
+      </a>
+    </div>
+
+    <h3 style="margin-top:1.5rem">Migration &amp; Setup Tools</h3>
+    <div class="link-grid">
+      <a class="link-card" href="https://numb3rs.stream/guide/Nuvio/" target="_blank">
+        <span class="link-card-label">Nuvio Setup Guide</span>
+        <span class="link-card-desc">Full community-written setup walkthrough.</span>
+        <span class="link-card-url">numb3rs.stream/guide/Nuvio</span>
+      </a>
+      <a class="link-card" href="https://nuviosync.com/" target="_blank">
+        <span class="link-card-label">Nuvio Sync</span>
+        <span class="link-card-desc">Migrate your Stremio library to Nuvio.</span>
+        <span class="link-card-url">nuviosync.com</span>
+      </a>
+      <a class="link-card" href="https://nuvio-account-cloner.vercel.app/" target="_blank">
+        <span class="link-card-label">Account Cloner</span>
+        <span class="link-card-desc">Clone account, addons, and config from Stremio.</span>
+        <span class="link-card-url">nuvio-account-cloner.vercel.app</span>
+      </a>
+      <a class="link-card" href="https://bootstrapper.stremx.net/" target="_blank">
+        <span class="link-card-label">Account Bootstrapper</span>
+        <span class="link-card-desc">Set up a fresh Nuvio account from scratch.</span>
+        <span class="link-card-url">bootstrapper.stremx.net</span>
+      </a>
+      <a class="link-card" href="https://nuvioinstant.3hpm.ca/" target="_blank">
+        <span class="link-card-label">Direct Debrid Starter</span>
+        <span class="link-card-desc">TorBox and Premiumize native integration guide.</span>
+        <span class="link-card-url">nuvioinstant.3hpm.ca</span>
+      </a>
+      <a class="link-card" href="https://xperience-app.com/" target="_blank">
+        <span class="link-card-label">Xperience</span>
+        <span class="link-card-desc">Visual addon and UI configuration tool.</span>
+        <span class="link-card-url">xperience-app.com</span>
+      </a>
+    </div>
+
+    <h3 style="margin-top:1.5rem">Customisation</h3>
+    <div class="link-grid">
+      <a class="link-card" href="https://yaarpatandaraa.github.io/nuvio-collections-editor/" target="_blank">
+        <span class="link-card-label">Collections Editor</span>
+        <span class="link-card-desc">Visual JSON editor for Nuvio Collections.</span>
+        <span class="link-card-url">yaarpatandaraa.github.io/nuvio-collections-editor</span>
+      </a>
+      <a class="link-card" href="https://nintle.github.io/Badger/" target="_blank">
+        <span class="link-card-label">Badger</span>
+        <span class="link-card-desc">Custom stream badge generator and configurator.</span>
+        <span class="link-card-url">nintle.github.io/Badger</span>
+      </a>
+      <a class="link-card" href="https://crispyduck.xyz/" target="_blank">
+        <span class="link-card-label">Crispy Duck</span>
+        <span class="link-card-desc">Stream template formatter for AIOStreams and direct debrid.</span>
+        <span class="link-card-url">crispyduck.xyz</span>
+      </a>
+    </div>
+
+    <h3 style="margin-top:1.5rem">Status / Uptime</h3>
+    <div class="link-grid">
+      <a class="link-card" href="https://uptime.ibbylabs.dev/" target="_blank">
+        <span class="link-card-label">Ibbylabs Uptime</span>
+        <span class="link-card-desc">Status tracker for Nuvio and addon services.</span>
+        <span class="link-card-url">uptime.ibbylabs.dev</span>
+      </a>
+      <a class="link-card" href="https://status.stremio-status.com/" target="_blank">
+        <span class="link-card-label">Stremio Status</span>
+        <span class="link-card-desc">Stremio-side service status (useful for shared addons).</span>
+        <span class="link-card-url">status.stremio-status.com</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>All tools and links credit their respective developers — this guide only gathers them in one place. For support, join the <a href="https://discord.gg/CEQ773qCk">Nuvio Discord</a>.</p>
+</footer>
+
+<script>
+  function switchTab(e, id) {
+    const group = e.target.closest('.tab-group');
+    group.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    group.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    e.target.classList.add('active');
+    document.getElementById(id).classList.add('active');
+  }
+</script>
