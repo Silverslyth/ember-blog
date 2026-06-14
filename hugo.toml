@@ -2,7 +2,8 @@ baseURL = "https://yourdomain.com"
 languageCode = "en-us"
 title = "Ember"
 theme = "ember"
-paginate = 8
+[pagination]
+  pagerSize = 8
 enableRobotsTXT = true
 enableEmoji = true
 hasCJKLanguage = false
