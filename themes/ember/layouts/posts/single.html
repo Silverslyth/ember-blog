@@ -1,0 +1,76 @@
+{{ define "main" }}
+<div class="container">
+  <article class="post-single" itemscope itemtype="https://schema.org/BlogPosting">
+
+    <header class="post-header">
+      <div class="post-meta">
+        {{ with .Params.categories }}
+          {{ range . }}
+            <a href="{{ "/categories/" | relURL }}{{ . | urlize }}" class="category-badge">{{ . }}</a>
+          {{ end }}
+        {{ end }}
+        <time datetime="{{ .Date.Format "2006-01-02" }}" class="post-date" itemprop="datePublished">
+          {{ .Date.Format "2 January 2006" }}
+        </time>
+        <span class="read-time">{{ .ReadingTime }} min read</span>
+      </div>
+
+      <h1 class="post-title" itemprop="headline">{{ .Title }}</h1>
+
+      {{ with .Description }}
+        <p class="post-subtitle" itemprop="description">{{ . }}</p>
+      {{ end }}
+
+      <div class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+        <span class="author-name" itemprop="name">{{ .Site.Params.author }}</span>
+      </div>
+    </header>
+
+    {{ with .Params.image }}
+      <figure class="post-hero-img">
+        <img src="{{ . }}" alt="{{ $.Title }}" loading="eager" itemprop="image" />
+      </figure>
+    {{ end }}
+
+    <div class="post-content prose" itemprop="articleBody">
+      {{ .Content }}
+    </div>
+
+    {{/* Tags */}}
+    {{ with .Params.tags }}
+      <footer class="post-tags">
+        <span class="tags-label">Tagged:</span>
+        {{ range . }}
+          <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="tag-link">#{{ . }}</a>
+        {{ end }}
+      </footer>
+    {{ end }}
+
+    {{/* Navigation between posts */}}
+    <nav class="post-nav" aria-label="Post navigation">
+      {{ with .PrevInSection }}
+        <a href="{{ .Permalink }}" class="post-nav-link post-nav-prev">
+          <span class="nav-direction">← Previous</span>
+          <span class="nav-title">{{ .Title }}</span>
+        </a>
+      {{ else }}
+        <span></span>
+      {{ end }}
+      {{ with .NextInSection }}
+        <a href="{{ .Permalink }}" class="post-nav-link post-nav-next">
+          <span class="nav-direction">Next →</span>
+          <span class="nav-title">{{ .Title }}</span>
+        </a>
+      {{ end }}
+    </nav>
+
+    {{/* Donation nudge */}}
+    {{ if .Site.Params.donateEnabled }}
+      <aside class="donate-nudge">
+        <p>If this post was useful or enjoyable, consider <a href="{{ "/donate/" | relURL }}">buying me a coffee</a>. It keeps the writing going.</p>
+      </aside>
+    {{ end }}
+
+  </article>
+</div>
+{{ end }}

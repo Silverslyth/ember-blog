@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0D0D0F"/>
+  <rect x="60" y="60" width="1080" height="510" rx="12" fill="#18181B" stroke="#2A2A2F" stroke-width="1.5"/>
+  <!-- Accent rule -->
+  <rect x="60" y="60" width="4" height="510" rx="2" fill="#C8893A"/>
+  <!-- Site title -->
+  <text x="120" y="280" font-family="Georgia, serif" font-size="96" font-weight="700" font-style="italic" fill="#E8E6E0" letter-spacing="-2">Ember</text>
+  <!-- Tagline -->
+  <text x="120" y="350" font-family="Georgia, serif" font-size="32" fill="#8A8894">Words on the page.</text>
+  <!-- URL hint -->
+  <text x="120" y="520" font-family="system-ui, sans-serif" font-size="22" fill="#4A4A55">yourdomain.com</text>
+</svg>

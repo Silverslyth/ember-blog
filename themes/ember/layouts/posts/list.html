@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div class="container">
+
+  <header class="archive-header">
+    {{ if .IsHome }}
+      <h1 class="archive-title">All posts</h1>
+    {{ else }}
+      <p class="archive-eyebrow">
+        {{ if eq .Kind "taxonomy" }}Category{{ else if eq .Kind "term" }}Category{{ end }}
+      </p>
+      <h1 class="archive-title">{{ .Title }}</h1>
+    {{ end }}
+    {{ with .Description }}<p class="archive-desc">{{ . }}</p>{{ end }}
+    <p class="archive-count">{{ len .Pages }} {{ if eq (len .Pages) 1 }}post{{ else }}posts{{ end }}</p>
+  </header>
+
+  {{ if .Pages }}
+    <div class="posts-grid posts-grid--full">
+      {{ range .Paginator.Pages }}
+        {{ partial "post-card.html" . }}
+      {{ end }}
+    </div>
+
+    {{/* Pagination */}}
+    {{ template "_internal/pagination.html" . }}
+  {{ else }}
+    <p class="empty-state">No posts found.</p>
+  {{ end }}
+
+</div>
+{{ end }}

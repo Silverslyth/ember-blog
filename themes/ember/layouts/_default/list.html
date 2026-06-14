@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="container">
+
+  <header class="archive-header">
+    <h1 class="archive-title">Categories</h1>
+    <p class="archive-desc">Browse posts by topic.</p>
+  </header>
+
+  <div class="taxonomy-grid">
+    {{ range .Data.Terms.Alphabetical }}
+      <a href="{{ .Page.Permalink }}" class="taxonomy-card">
+        <span class="taxonomy-name">{{ .Page.Title }}</span>
+        <span class="taxonomy-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
+      </a>
+    {{ end }}
+  </div>
+
+</div>
+{{ end }}

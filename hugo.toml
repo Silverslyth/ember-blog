@@ -1,0 +1,70 @@
+baseURL = "https://yourdomain.com"
+languageCode = "en-us"
+title = "Ember"
+theme = "ember"
+paginate = 8
+enableRobotsTXT = true
+enableEmoji = true
+hasCJKLanguage = false
+
+[params]
+  author = "Your Name"
+  description = "Writing on literature, technology, and the space between."
+  tagline = "Words on the page."
+  email = "hello@yourdomain.com"
+  # Social links (leave empty to hide)
+  github = ""
+  mastodon = ""
+  twitter = ""
+  # Donation page
+  donateEnabled = true
+  kofiLink = ""
+  paypalLink = ""
+  btcAddress = ""
+  # SEO
+  googleVerification = ""
+  openGraphImage = "/images/og-default.svg"
+  # Features
+  searchEnabled = true
+  darkModeToggle = true
+
+[menu]
+  [[menu.main]]
+    name = "Writing"
+    url = "/posts/"
+    weight = 1
+  [[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 2
+  [[menu.main]]
+    name = "About"
+    url = "/pages/about/"
+    weight = 3
+  [[menu.main]]
+    name = "Support"
+    url = "/donate/"
+    weight = 4
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "dracula"
+    lineNos = false
+    codeFences = true
+    guessSyntax = true
+
+[minify]
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepWhitespace = false
