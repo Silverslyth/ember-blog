@@ -1,4 +1,4 @@
-baseURL = "https://yourdomain.com"
+baseURL = "https://hugo-eight-ochre.vercel.app"
 languageCode = "en-us"
 title = "Ember"
 theme = "ember"
@@ -9,10 +9,10 @@ enableEmoji = true
 hasCJKLanguage = false
 
 [params]
-  author = "Your Name"
+  author = "Gem"
   description = "Writing on literature, technology, and the space between."
-  tagline = "Words on the page."
-  email = "hello@yourdomain.com"
+  tagline = "Guides, streaming tools, Linux, and digital workflows."
+  email = ""
   # Social links (leave empty to hide)
   github = ""
   mastodon = ""
