@@ -1,0 +1,53 @@
+{{ define "main" }}
+<div class="container">
+  <div class="donate-page">
+
+    <header class="page-header">
+      <h1 class="page-title">Support this blog</h1>
+      <p class="page-subtitle">Writing takes time. If something here helped you or made your day a little better, a small contribution means a lot.</p>
+    </header>
+
+    <div class="donate-options">
+
+      {{ with .Site.Params.kofiLink }}
+        <a href="{{ . }}" class="donate-card donate-card--primary" target="_blank" rel="noopener noreferrer">
+          <div class="donate-icon">☕</div>
+          <div class="donate-info">
+            <h2>Buy me a coffee</h2>
+            <p>One-time support via Ko-fi. No account needed.</p>
+          </div>
+          <span class="donate-action">Go to Ko-fi →</span>
+        </a>
+      {{ end }}
+
+      {{ with .Site.Params.paypalLink }}
+        <a href="{{ . }}" class="donate-card" target="_blank" rel="noopener noreferrer">
+          <div class="donate-icon">💳</div>
+          <div class="donate-info">
+            <h2>PayPal</h2>
+            <p>Send a one-time amount via PayPal.</p>
+          </div>
+          <span class="donate-action">Go to PayPal →</span>
+        </a>
+      {{ end }}
+
+      {{ with .Site.Params.btcAddress }}
+        <div class="donate-card donate-card--crypto">
+          <div class="donate-icon">₿</div>
+          <div class="donate-info">
+            <h2>Bitcoin</h2>
+            <p>Send BTC to this address.</p>
+            <code class="btc-address">{{ . }}</code>
+          </div>
+        </div>
+      {{ end }}
+
+    </div>
+
+    <div class="donate-note">
+      <p>You can also support this blog for free by sharing a post you found useful, linking to it, or just telling someone about it. That matters too.</p>
+    </div>
+
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,66 @@
+{{ define "main" }}
+<div class="container">
+
+  {{/* Hero */}}
+  <section class="home-hero">
+    <p class="hero-eyebrow">Latest writing</p>
+    <h1 class="hero-title">{{ .Site.Params.tagline }}</h1>
+    <p class="hero-desc">{{ .Site.Params.description }}</p>
+  </section>
+
+  {{/* Featured post (most recent) */}}
+  {{ $posts := where .Site.RegularPages "Type" "posts" }}
+  {{ $featured := index $posts 0 }}
+  {{ with $featured }}
+  <section class="featured-post" aria-label="Featured post">
+    <a href="{{ .Permalink }}" class="featured-card">
+      <div>
+        {{ with .Params.categories }}
+          {{ range first 1 . }}
+            <span class="category-badge">{{ . }}</span>
+          {{ end }}
+        {{ end }}
+      </div>
+      <h2 class="featured-title">{{ .Title }}</h2>
+      <p class="featured-excerpt">{{ with .Description }}{{ . }}{{ else }}{{ .Summary | truncate 160 }}{{ end }}</p>
+      <span class="read-more">Read post →</span>
+    </a>
+  </section>
+  {{ end }}
+
+  {{/* Post grid — skip featured */}}
+  {{ $rest := after 1 $posts }}
+  {{ if $rest }}
+  <section class="posts-grid-section">
+    <div class="section-header">
+      <h2 class="section-title">All posts</h2>
+      <a href="{{ "/posts/" | relURL }}" class="see-all">See all →</a>
+    </div>
+    <div class="posts-grid">
+      {{ range first 6 $rest }}
+        {{ partial "post-card.html" . }}
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* Categories */}}
+  {{ $categories := .Site.Taxonomies.categories }}
+  {{ if $categories }}
+  <section class="categories-section">
+    <div class="section-header">
+      <h2 class="section-title">Browse by category</h2>
+      <a href="{{ "/categories/" | relURL }}" class="see-all">All categories →</a>
+    </div>
+    <div class="category-chips">
+      {{ range $name, $pages := $categories }}
+        <a href="{{ "/categories/" | relURL }}{{ $name | urlize }}" class="category-chip">
+          {{ $name }}<span class="chip-count">{{ len $pages }}</span>
+        </a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+</div>
+{{ end }}

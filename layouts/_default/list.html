@@ -1,0 +1,36 @@
+{{ define "main" }}
+<div class="container">
+
+  <header class="archive-header">
+    <p class="phase-tag">
+      {{ if eq .Kind "taxonomy" }}Categories{{ end }}
+    </p>
+    <h1 class="archive-title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="archive-desc">{{ . }}</p>{{ end }}
+  </header>
+
+  {{ if eq .Kind "taxonomy" }}
+    <div class="taxonomy-grid">
+      {{ range .Data.Terms.Alphabetical }}
+        <a href="{{ .Page.Permalink }}" class="taxonomy-card">
+          <span class="taxonomy-name">{{ .Page.Title }}</span>
+          <span class="taxonomy-count">{{ .Count }}</span>
+        </a>
+      {{ end }}
+    </div>
+  {{ else }}
+    {{ if .Pages }}
+      <p class="archive-count">{{ len .Pages }} {{ if eq (len .Pages) 1 }}post{{ else }}posts{{ end }}</p>
+      <div class="posts-grid">
+        {{ range .Paginator.Pages }}
+          {{ partial "post-card.html" . }}
+        {{ end }}
+      </div>
+      {{ template "_internal/pagination.html" . }}
+    {{ else }}
+      <p class="empty-state">No posts found.</p>
+    {{ end }}
+  {{ end }}
+
+</div>
+{{ end }}

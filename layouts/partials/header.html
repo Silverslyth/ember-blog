@@ -1,0 +1,26 @@
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="{{ "/" | relURL }}" class="nav-brand">{{ .Site.Title }}</a>
+  <ul class="nav-links">
+    {{ range .Site.Menus.main }}
+      <li><a href="{{ .URL }}" class="{{ if (eq $.RelPermalink .URL) }}is-active{{ end }}">{{ .Name }}</a></li>
+    {{ end }}
+    <li><a href="{{ "/guides/nuvio-migration/" | relURL }}" class="{{ if hasPrefix $.RelPermalink "/guides/" }}is-active{{ end }}">Guides</a></li>
+    {{ if .Site.Params.searchEnabled }}
+      <li><button id="search-toggle" class="nav-search-btn" aria-label="Search" aria-expanded="false">Search</button></li>
+    {{ end }}
+  </ul>
+</nav>
+
+{{/* Search overlay */}}
+{{ if .Site.Params.searchEnabled }}
+<div class="search-overlay" id="search-overlay" aria-modal="true" role="dialog" aria-label="Search" hidden>
+  <div class="search-box">
+    <div style="display:flex;align-items:center;border-bottom:1px solid var(--border)">
+      <label for="search-input" class="sr-only">Search posts</label>
+      <input type="search" id="search-input" class="search-input" placeholder="Search posts…" autocomplete="off" spellcheck="false" />
+      <button id="search-close" class="search-close-btn" aria-label="Close search" style="background:none;border:none;color:var(--muted);padding:0 1.25rem;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.8rem">Esc</button>
+    </div>
+    <div class="search-results" id="search-results" aria-live="polite" aria-atomic="true"></div>
+  </div>
+</div>
+{{ end }}
