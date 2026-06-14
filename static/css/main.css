@@ -258,6 +258,10 @@ h1, h2, h3, h4, h5, h6 {
   padding-inline: 1rem;
 }
 
+.search-overlay[hidden] {
+  display: none;
+}
+
 .search-box {
   position: relative;
   width: 100%;
