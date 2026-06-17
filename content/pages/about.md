@@ -50,4 +50,4 @@ I enjoy Linux, systems thinking, open-source software, research, psychology, tec
 
 ## Contact
 
-For corrections, suggestions, or topic requests, use the [Support page](/donate/) — there are no contact forms or tracking on this site by design. If something in a guide is inaccurate or outdated, I want to know about it. Documentation is only useful if it stays current.
+For corrections, suggestions, or topic requests, use the [Support page](/support/) — there are no contact forms or tracking on this site by design. If something in a guide is inaccurate or outdated, I want to know about it. Documentation is only useful if it stays current.

@@ -1,7 +1,9 @@
 ---
-title: "Support"
+title: "Support Ember"
 date: 2026-06-14
 description: "Support Ember — help keep this archive online, independent, and freely accessible."
+aliases:
+  - /donate/
 ---
 
 ## Support Ember
@@ -10,7 +12,7 @@ Ember is a public archive — no paywalls, no ads, no tracking. Every guide, ref
 
 ## Donate
 
-[Support Ember on Ko-fi →](REPLACE_WITH_MY_KOFI_LINK)
+[Support Ember on Ko-fi →](https://ko-fi.com/emberdocs)
 
 Donations help cover the operational costs of running and maintaining this archive:
 

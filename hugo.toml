@@ -48,7 +48,7 @@ hasCJKLanguage = false
     weight = 4
   [[menu.main]]
     name = "Support"
-    url = "/donate/"
+    url = "/support/"
     weight = 5
 
 [taxonomies]
