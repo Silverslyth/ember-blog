@@ -2,7 +2,7 @@
 title: "Stremio → Nuvio: Migration Guide"
 date: 2026-06-14
 description: "Everything you need to move your library, addons, and debrid setup from Stremio to Nuvio — without starting from scratch."
-categories: ["Streaming"]
+categories: ["Streaming", "Guides", "Software"]
 tags: ["stremio", "nuvio", "migration", "streaming", "debrid", "torbox", "premiumize", "android-tv", "webos", "tizen", "ios", "addons"]
 slug: "stremio-to-nuvio-migration-guide"
 ---

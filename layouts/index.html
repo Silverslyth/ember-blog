@@ -8,6 +8,25 @@
     <p class="hero-desc">{{ .Site.Params.description }}</p>
   </section>
 
+  {{/* Browse the Archive */}}
+  <nav class="archive-nav" aria-label="Archive navigation">
+    <a href="{{ "/guides/" | relURL }}" class="archive-nav-card">
+      <span class="archive-nav-icon">📋</span>
+      <span class="archive-nav-label">Guides</span>
+      <span class="archive-nav-desc">Step-by-step walkthroughs</span>
+    </a>
+    <a href="{{ "/categories/" | relURL }}" class="archive-nav-card">
+      <span class="archive-nav-icon">📂</span>
+      <span class="archive-nav-label">Categories</span>
+      <span class="archive-nav-desc">Browse by topic</span>
+    </a>
+    <a href="{{ "/pages/about/" | relURL }}" class="archive-nav-card">
+      <span class="archive-nav-icon">📖</span>
+      <span class="archive-nav-label">About</span>
+      <span class="archive-nav-desc">What this archive is</span>
+    </a>
+  </nav>
+
   {{/* Featured post (most recent) */}}
   {{ $posts := where .Site.RegularPages "Type" "posts" }}
   {{ $featured := index $posts 0 }}
@@ -33,7 +52,7 @@
   {{ if $rest }}
   <section class="posts-grid-section">
     <div class="section-header">
-      <h2 class="section-title">All posts</h2>
+      <h2 class="section-title">From the Archive</h2>
       <a href="{{ "/posts/" | relURL }}" class="see-all">See all →</a>
     </div>
     <div class="posts-grid">

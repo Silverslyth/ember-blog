@@ -1,12 +1,12 @@
 name = "Ember"
 license = "MIT"
 licenselink = ""
-description = "A dark-first editorial Hugo theme with search, categories, and donation support."
-homepage = ""
-tags = ["blog", "dark", "minimal", "search"]
-features = ["dark mode", "search", "categories", "SEO", "RSS"]
+description = "A dark-first editorial Hugo theme with search, categories, and donation support — built for the Ember digital archive."
+homepage = "https://hugo-eight-ochre.vercel.app"
+tags = ["blog", "dark", "minimal", "search", "archive"]
+features = ["dark mode", "search", "categories", "SEO", "RSS", "guides"]
 min_version = "0.110.0"
 
 [author]
-  name = ""
-  homepage = ""
+  name = "Gem"
+  homepage = "https://hugo-eight-ochre.vercel.app"

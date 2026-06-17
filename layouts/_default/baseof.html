@@ -260,6 +260,48 @@
 
     .card p { margin: 0; font-size: .88rem; }
 
+    /* ── ARCHIVE NAV (homepage) ── */
+    .archive-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .archive-nav-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .35rem;
+      padding: 1.25rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+
+    .archive-nav-card:hover {
+      border-color: var(--violet-dim);
+      background: var(--surface2);
+    }
+
+    .archive-nav-icon { font-size: 1.4rem; }
+    .archive-nav-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--text);
+    }
+    .archive-nav-desc {
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 500px) {
+      .archive-nav { grid-template-columns: 1fr; }
+    }
+
     /* ── POST CARDS ── */
     .posts-grid {
       display: grid;

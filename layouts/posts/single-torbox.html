@@ -32,6 +32,13 @@
 
 <!-- MAIN CONTENT -->
 <div class="page-wrap">
+  <!-- Author + meta bar -->
+  <div style="max-width:1100px;margin:0 auto 1.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;font-family:var(--tb-mono);font-size:0.72rem;color:var(--tb-muted);padding:0 2rem;">
+    <span>By <strong style="color:var(--tb-text)">{{ .Site.Params.author }}</strong></span>
+    <span>{{ .Date.Format "2 January 2006" }}</span>
+    <span>{{ with .Params.readingTime }}{{ . }}{{ else }}{{ .ReadingTime }}{{ end }} min read</span>
+    {{ with .Lastmod }}<span>Updated {{ .Format "2 January 2006" }}</span>{{ end }}
+  </div>
   <div class="content-grid">
 
     <!-- TOC -->
