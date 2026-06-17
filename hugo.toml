@@ -19,7 +19,7 @@ hasCJKLanguage = false
   twitter = ""
   # Donation page
   donateEnabled = true
-  kofiLink = ""
+  kofiLink = "https://ko-fi.com/emberdocs"
   paypalLink = ""
   btcAddress = ""
   # SEO
