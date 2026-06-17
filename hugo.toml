@@ -40,12 +40,89 @@ hasCJKLanguage = false
     weight = 1
   [[menu.main]]
     name = "Guides"
+    identifier = "guides"
     url = "/guides/"
     weight = 2
   [[menu.main]]
+    name = "Linux"
+    parent = "guides"
+    url = "/categories/linux/"
+    weight = 1
+  [[menu.main]]
+    name = "Streaming"
+    parent = "guides"
+    url = "/categories/streaming/"
+    weight = 2
+  [[menu.main]]
+    name = "Privacy"
+    parent = "guides"
+    url = "/categories/privacy/"
+    weight = 3
+  [[menu.main]]
+    name = "Self-Hosting"
+    parent = "guides"
+    url = "/categories/self-hosting/"
+    weight = 4
+  [[menu.main]]
+    name = "Automation"
+    parent = "guides"
+    url = "/categories/automation/"
+    weight = 5
+  [[menu.main]]
+    name = "Software"
+    parent = "guides"
+    url = "/categories/software/"
+    weight = 6
+  [[menu.main]]
+    name = "Workflows"
+    parent = "guides"
+    url = "/categories/workflows/"
+    weight = 7
+  [[menu.main]]
     name = "Categories"
+    identifier = "categories"
     url = "/categories/"
     weight = 3
+  [[menu.main]]
+    name = "TorBox"
+    parent = "categories"
+    url = "/categories/torbox/"
+    weight = 1
+  [[menu.main]]
+    name = "EasyNews"
+    parent = "categories"
+    url = "/categories/easynews/"
+    weight = 2
+  [[menu.main]]
+    name = "Stremio"
+    parent = "categories"
+    url = "/categories/stremio/"
+    weight = 3
+  [[menu.main]]
+    name = "Fedora"
+    parent = "categories"
+    url = "/categories/fedora/"
+    weight = 4
+  [[menu.main]]
+    name = "Docker"
+    parent = "categories"
+    url = "/categories/docker/"
+    weight = 5
+  [[menu.main]]
+    name = "Hyprland"
+    parent = "categories"
+    url = "/categories/hyprland/"
+    weight = 6
+  [[menu.main]]
+    name = "Obsidian"
+    parent = "categories"
+    url = "/categories/obsidian/"
+    weight = 7
+  [[menu.main]]
+    name = "Mullvad"
+    parent = "categories"
+    url = "/categories/mullvad/"
+    weight = 8
   [[menu.main]]
     name = "Q&A"
     url = "/qa/"

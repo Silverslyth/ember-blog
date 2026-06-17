@@ -1,24 +1,97 @@
-<nav class="site-nav" aria-label="Main navigation">
-  <a href="{{ "/" | relURL }}" class="nav-brand">{{ .Site.Title }}</a>
-  <ul class="nav-links">
-    {{ range .Site.Menus.main }}
-      <li><a href="{{ .URL }}" class="{{ if (eq $.RelPermalink .URL) }}is-active{{ end }}">{{ .Name }}</a></li>
-    {{ end }}
-    {{ if .Site.Params.searchEnabled }}
-      <li><button id="search-toggle" class="nav-search-btn" aria-label="Search" aria-expanded="false">Search</button></li>
-    {{ end }}
-  </ul>
-</nav>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{{ "/" | relURL }}" class="site-logo" aria-label="{{ .Site.Title }} home">
+      <span class="logo-text">{{ .Site.Title }}</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul class="nav-list" role="list">
+        {{ range .Site.Menus.main }}
+          {{ if .HasChildren }}
+            <li class="nav-item nav-item--dropdown">
+              <a href="{{ .URL }}" class="nav-link{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}" aria-haspopup="true" aria-expanded="false">
+                {{ .Name }}
+                <span class="dropdown-arrow" aria-hidden="true">▾</span>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-label="{{ .Name }} submenu">
+                {{ range .Children }}
+                  <li class="dropdown-item" role="none">
+                    <a href="{{ .URL }}" class="dropdown-link{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}" role="menuitem">
+                      {{ .Name }}
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
+            </li>
+          {{ else }}
+            <li class="nav-item">
+              <a href="{{ .URL }}" class="nav-link{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}">
+                {{ .Name }}
+              </a>
+            </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      {{ if .Site.Params.searchEnabled }}
+        <button class="icon-btn" id="search-toggle" aria-label="Search" aria-expanded="false" aria-controls="search-overlay">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </button>
+      {{ end }}
+
+      {{ if .Site.Params.darkModeToggle }}
+        <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+          </svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      {{ end }}
+
+      <button class="icon-btn hamburger" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+  </div>
+
+  {{/* Mobile nav */}}
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+    <ul class="mobile-nav-list" role="list">
+      {{ range .Site.Menus.main }}
+        {{ if .HasChildren }}
+          <li class="mobile-nav-group">
+            <a href="{{ .URL }}" class="mobile-nav-link mobile-nav-parent{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}">{{ .Name }}</a>
+            <ul class="mobile-subnav" role="list">
+              {{ range .Children }}
+                <li><a href="{{ .URL }}" class="mobile-nav-link mobile-nav-child{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}">{{ .Name }}</a></li>
+              {{ end }}
+            </ul>
+          </li>
+        {{ else }}
+          <li><a href="{{ .URL }}" class="mobile-nav-link{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}">{{ .Name }}</a></li>
+        {{ end }}
+      {{ end }}
+    </ul>
+  </nav>
+</header>
 
 {{/* Search overlay */}}
 {{ if .Site.Params.searchEnabled }}
 <div class="search-overlay" id="search-overlay" aria-modal="true" role="dialog" aria-label="Search" hidden>
   <div class="search-box">
-    <div style="display:flex;align-items:center;border-bottom:1px solid var(--border)">
-      <label for="search-input" class="sr-only">Search posts</label>
-      <input type="search" id="search-input" class="search-input" placeholder="Search posts…" autocomplete="off" spellcheck="false" />
-      <button id="search-close" class="search-close-btn" aria-label="Close search" style="background:none;border:none;color:var(--muted);padding:0 1.25rem;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.8rem">Esc</button>
-    </div>
+    <label for="search-input" class="sr-only">Search posts</label>
+    <input type="search" id="search-input" class="search-input" placeholder="Search posts…" autocomplete="off" spellcheck="false" />
+    <button class="search-close icon-btn" id="search-close" aria-label="Close search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
     <div class="search-results" id="search-results" aria-live="polite" aria-atomic="true"></div>
   </div>
 </div>

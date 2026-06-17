@@ -7,11 +7,29 @@
     <nav class="site-nav" aria-label="Main navigation">
       <ul class="nav-list" role="list">
         {{ range .Site.Menus.main }}
-          <li class="nav-item">
-            <a href="{{ .URL }}" class="nav-link{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}">
-              {{ .Name }}
-            </a>
-          </li>
+          {{ if .HasChildren }}
+            <li class="nav-item nav-item--dropdown">
+              <a href="{{ .URL }}" class="nav-link{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}" aria-haspopup="true" aria-expanded="false">
+                {{ .Name }}
+                <span class="dropdown-arrow" aria-hidden="true">▾</span>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-label="{{ .Name }} submenu">
+                {{ range .Children }}
+                  <li class="dropdown-item" role="none">
+                    <a href="{{ .URL }}" class="dropdown-link{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}" role="menuitem">
+                      {{ .Name }}
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
+            </li>
+          {{ else }}
+            <li class="nav-item">
+              <a href="{{ .URL }}" class="nav-link{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}">
+                {{ .Name }}
+              </a>
+            </li>
+          {{ end }}
         {{ end }}
       </ul>
     </nav>
@@ -46,7 +64,18 @@
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
     <ul class="mobile-nav-list" role="list">
       {{ range .Site.Menus.main }}
-        <li><a href="{{ .URL }}" class="mobile-nav-link{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}">{{ .Name }}</a></li>
+        {{ if .HasChildren }}
+          <li class="mobile-nav-group">
+            <a href="{{ .URL }}" class="mobile-nav-link mobile-nav-parent{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}">{{ .Name }}</a>
+            <ul class="mobile-subnav" role="list">
+              {{ range .Children }}
+                <li><a href="{{ .URL }}" class="mobile-nav-link mobile-nav-child{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}">{{ .Name }}</a></li>
+              {{ end }}
+            </ul>
+          </li>
+        {{ else }}
+          <li><a href="{{ .URL }}" class="mobile-nav-link{{ if (eq $.RelPermalink .URL) }} is-active{{ end }}">{{ .Name }}</a></li>
+        {{ end }}
       {{ end }}
     </ul>
   </nav>

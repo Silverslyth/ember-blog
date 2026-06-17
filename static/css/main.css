@@ -194,6 +194,125 @@ h1, h2, h3, h4, h5, h6 {
 .nav-link.is-active::after,
 .nav-link:hover::after { transform: scaleX(1); }
 
+/* ── Dropdown arrow ──────────────────────────────── */
+.dropdown-arrow {
+  display: inline-block;
+  font-size: .7em;
+  margin-left: .25rem;
+  transition: transform .2s;
+  vertical-align: middle;
+}
+
+.nav-item--dropdown:hover .dropdown-arrow,
+.nav-item--dropdown:focus-within .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown menu ───────────────────────────────── */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + .5rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  opacity: 0;
+  visibility: hidden;
+  min-width: 200px;
+  background: #0f1117;
+  border: 1px solid #1e2130;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0,0,0,.6), 0 0 0 1px rgba(200,137,58,.08);
+  padding: .5rem 0;
+  z-index: 110;
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  list-style: none;
+}
+
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #0f1117;
+}
+
+.nav-item--dropdown {
+  position: relative;
+}
+
+.nav-item--dropdown:hover .dropdown-menu,
+.nav-item--dropdown:focus-within .dropdown-menu,
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Dropdown items ──────────────────────────────── */
+.dropdown-link {
+  display: block;
+  padding: .55rem 1.25rem;
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color .15s, background .15s, padding-left .2s;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+}
+
+.dropdown-link:hover,
+.dropdown-link:focus-visible,
+.dropdown-link.is-active {
+  color: var(--text);
+  background: rgba(200,137,58,.08);
+  padding-left: 1.5rem;
+}
+
+.dropdown-link.is-active {
+  color: var(--accent);
+}
+
+/* ── Mega-menu for large category lists (8+ items) ─ */
+.dropdown-menu--mega {
+  min-width: 380px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: .625rem;
+}
+
+.dropdown-menu--mega .dropdown-item {
+  flex: 0 0 50%;
+}
+
+.dropdown-menu--mega .dropdown-link {
+  padding: .55rem 1rem;
+}
+
+/* ── Mobile dropdown ─────────────────────────────── */
+.mobile-nav-group {
+  margin-bottom: .25rem;
+}
+
+.mobile-nav-parent {
+  font-weight: 700 !important;
+  color: var(--text) !important;
+}
+
+.mobile-subnav {
+  padding-left: 1rem;
+  margin-top: .125rem;
+}
+
+.mobile-nav-child {
+  font-size: .82rem !important;
+  padding-block: .35rem !important;
+  opacity: .85;
+}
+
 .header-actions {
   display: flex;
   align-items: center;
