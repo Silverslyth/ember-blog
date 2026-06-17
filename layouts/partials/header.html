@@ -81,20 +81,49 @@
   </nav>
 </header>
 
-{{/* Command palette overlay */}}
+{{/* Search modal — modern documentation search (Linear / Raycast / Vercel style) */}}
 {{ if .Site.Params.searchEnabled }}
-<div class="search-overlay" id="search-overlay" aria-modal="true" role="dialog" aria-label="Search" hidden>
-  <div class="cmd-palette">
-    <div class="cmd-input-wrap">
-      <span class="cmd-prompt">&gt;</span>
-      <input type="text" id="search-input" class="cmd-input" placeholder="search the archive..." autocomplete="off" spellcheck="false" aria-label="Search posts" />
-      <span class="cmd-kbd-hint">esc to close</span>
+<div class="search-overlay" id="search-overlay" aria-modal="true" role="dialog" aria-label="Search" data-popular='{{ .Site.Params.searchPopular | jsonify }}' hidden>
+  <div class="search-modal">
+    <div class="search-top">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="search-input" class="search-field" placeholder="Search guides, workflows, tools..." autocomplete="off" spellcheck="false" aria-label="Search" />
+      <kbd class="search-kbd" id="search-kbd-hint">⌘K</kbd>
     </div>
-    <div class="cmd-results" id="search-results" aria-live="polite" aria-atomic="true"></div>
-    <div class="cmd-footer">
-      <span id="search-count"></span>
-      <span class="cmd-shortcuts">
-        <kbd>↑↓</kbd> navigate &nbsp; <kbd>↵</kbd> open &nbsp; <kbd>esc</kbd> close
+
+    <div class="search-body" id="search-body">
+      {{/* Empty state: recent + popular */}}
+      <div class="search-start" id="search-start">
+        <div class="search-panels">
+          <div class="search-panel" id="search-recent-panel" hidden>
+            <h3 class="search-panel-heading">Recent</h3>
+            <ul class="search-panel-list" id="search-recent-list" role="list"></ul>
+          </div>
+          <div class="search-panel">
+            <h3 class="search-panel-heading">Popular Guides</h3>
+            <ul class="search-panel-list" id="search-popular-list" role="list"></ul>
+          </div>
+        </div>
+        <div class="search-filters" id="search-filters">
+          <span class="search-filter-label">Filter by</span>
+          <button class="search-filter-chip is-active" data-category="">All</button>
+        </div>
+      </div>
+
+      {{/* Results */}}
+      <div class="search-results" id="search-results" hidden></div>
+      <div class="search-empty" id="search-empty" hidden>
+        <p>No results found.</p>
+        <p class="search-empty-hint">Try a different search term or browse <a href="/categories/">categories</a>.</p>
+      </div>
+    </div>
+
+    <div class="search-footer">
+      <span id="search-count-label"></span>
+      <span class="search-shortcuts">
+        <kbd>↑↓</kbd> navigate <kbd>↵</kbd> open <kbd>esc</kbd> close
       </span>
     </div>
   </div>

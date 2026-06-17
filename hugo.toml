@@ -28,6 +28,13 @@ hasCJKLanguage = false
   # Features
   searchEnabled = true
   darkModeToggle = true
+  # Popular guides shown in search palette (URLs relative to site root)
+  searchPopular = [
+    "/posts/torbox-nuvio-setup-guide/",
+    "/posts/stremio-to-nuvio-migration-guide/",
+    "/posts/easynews-vs-debrid-guide/",
+    "/posts/self-hosting-starter-guide/"
+  ]
   # Analytics — Umami (privacy-first, self-hosted)
   # Set umamiSiteId and umamiScriptUrl to enable
   umamiSiteId = "94c97416-c09d-488a-866f-4dae04728b46"
