@@ -38,16 +38,23 @@
   {{ with $featured }}
   <section class="featured-post" aria-label="Featured post">
     <a href="{{ .Permalink }}" class="featured-card">
-      <div>
-        {{ with .Params.categories }}
-          {{ range first 1 . }}
-            <span class="category-badge">{{ . }}</span>
+      <div class="featured-card-inner">
+        <div class="featured-card-top">
+          {{ with .Params.categories }}
+            {{ range first 1 . }}
+              <span class="archive-badge archive-badge--{{ . | urlize }} archive-badge--lg">{{ . }}</span>
+            {{ end }}
           {{ end }}
-        {{ end }}
+        </div>
+        <h2 class="featured-title">{{ .Title }}</h2>
+        <p class="featured-excerpt">{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 200 }}{{ end }}</p>
+        <div class="featured-card-meta">
+          <span>{{ if lt .ReadingTime 1 }}1{{ else }}{{ .ReadingTime }}{{ end }} min read</span>
+          <span class="archive-card-sep">·</span>
+          <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+        </div>
+        <span class="featured-cta">Read post →</span>
       </div>
-      <h2 class="featured-title">{{ .Title }}</h2>
-      <p class="featured-excerpt">{{ with .Description }}{{ . }}{{ else }}{{ .Summary | truncate 160 }}{{ end }}</p>
-      <span class="read-more">Read post →</span>
     </a>
   </section>
   {{ end }}
@@ -57,7 +64,7 @@
   {{ if $rest }}
   <section class="posts-grid-section">
     <div class="section-header">
-      <h2 class="section-title">From the Archive</h2>
+      <h2 class="section-title">Recent Discoveries</h2>
       <a href="{{ "/posts/" | relURL }}" class="see-all">See all →</a>
     </div>
     <div class="posts-grid">

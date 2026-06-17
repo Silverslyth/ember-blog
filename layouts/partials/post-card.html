@@ -1,18 +1,27 @@
-<article class="post-card">
-  <a href="{{ .Permalink }}" class="post-card-link" tabindex="-1" aria-hidden="true"></a>
-  <div class="post-card-meta">
+<article class="archive-card">
+  <a href="{{ .Permalink }}" class="archive-card-link" tabindex="-1" aria-hidden="true"></a>
+
+  <div class="archive-card-top">
     {{ with .Params.categories }}
       {{ range first 1 . }}
-        <a href="{{ "/categories/" | relURL }}{{ . | urlize }}" class="category-badge">{{ . }}</a>
+        <span class="archive-badge archive-badge--{{ . | urlize }}">{{ . }}</span>
       {{ end }}
     {{ end }}
-    <span class="post-date">{{ .Date.Format "Jan 2, 2006" }}</span>
   </div>
-  <h3 class="post-card-title">
+
+  <h3 class="archive-card-title">
     <a href="{{ .Permalink }}">{{ .Title }}</a>
   </h3>
-  <p class="post-card-excerpt">{{ with .Description }}{{ . }}{{ else }}{{ .Summary | truncate 120 }}{{ end }}</p>
-  <div class="post-card-footer">
-    <span class="read-time">{{ .ReadingTime }} min read</span>
+
+  {{ $desc := .Description }}
+  {{ if not $desc }}
+    {{ $desc = .Summary | plainify | truncate 120 }}
+  {{ end }}
+  <p class="archive-card-desc">{{ $desc }}</p>
+
+  <div class="archive-card-meta">
+    <span class="archive-card-reading">{{ if lt .ReadingTime 1 }}1{{ else }}{{ .ReadingTime }}{{ end }} min read</span>
+    <span class="archive-card-sep">·</span>
+    <span class="archive-card-date">{{ .Date.Format "Jan 2, 2006" }}</span>
   </div>
 </article>
