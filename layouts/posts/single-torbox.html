@@ -1,0 +1,284 @@
+{{ define "main" }}
+<link rel="stylesheet" href="{{ "css/torbox-guide.css" | relURL }}" />
+<div class="torbox-guide">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="scan-beam"></div>
+  <div class="hero-glow glow-violet"></div>
+  <div class="hero-glow glow-cyan"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Full Setup Guide</div>
+    <h1>
+      <span class="gradient-text">TorBox + Nuvio</span><br>
+      The Stack That Works
+    </h1>
+    <p class="hero-sub">
+      Everything from connecting your debrid to configuring addons and visual stream badges — built for people who want it done right.
+    </p>
+    <a href="https://torbox.app/subscription?referral=fba33ed8-000f-49b4-a23f-8c7f1be5b16e" class="hero-cta" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Sign Up for TorBox
+    </a>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="page-wrap">
+  <div class="content-grid">
+
+    <!-- TOC -->
+    <aside class="toc">
+      <div class="toc-label">On this page</div>
+      <ul>
+        <li><a href="#why-torbox">Why TorBox</a></li>
+        <li><a href="#client">The Client: Nuvio</a></li>
+        <li><a href="#addons">Stream Addons</a></li>
+        <li><a href="#badges">Visual Badges</a></li>
+        <li><a href="#stack">Full Stack</a></li>
+        <li><a href="#tips">Tips</a></li>
+      </ul>
+    </aside>
+
+    <!-- ARTICLE -->
+    <article class="article">
+
+      <!-- WHY TORBOX -->
+      <section class="section" id="why-torbox">
+        <div class="section-label">Background</div>
+        <h2>Why TorBox</h2>
+        <p>I was on Real Debrid for 5–6 years. Made the switch before things went sideways over there — partly luck, partly a hunch. TorBox has been rock solid since, the pricing is reasonable, and it actually keeps improving.</p>
+        <p>Instant availability on popular content is genuinely impressive — most things play immediately without any wait. 4K remuxes, anime, K-dramas, regular releases, all covered.</p>
+
+        <div class="referral-banner">
+          <div class="referral-text">
+            <h3>Not on TorBox yet?</h3>
+            <p>Sign up through this link and get started with the best debrid service running right now.</p>
+          </div>
+          <a href="https://torbox.app/subscription?referral=fba33ed8-000f-49b4-a23f-8c7f1be5b16e" class="referral-btn" target="_blank" rel="noopener">
+            Get TorBox
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- CLIENT -->
+      <section class="section" id="client">
+        <div class="section-label">Client</div>
+        <h2>The Client: Nuvio</h2>
+        <p>Nuvio is a Stremio-compatible streaming client with a cleaner UI and more customization than the stock Stremio app. Available on Android, iOS, and TV.</p>
+        <p>The key advantage: native debrid support. Connect TorBox once and it works across all your addons automatically — no need to paste your API key into every single addon config.</p>
+
+        <div class="card">
+          <div class="step-list">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-text">Open Nuvio and go to <strong>Settings</strong></div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-text">Navigate to <strong>Connected Services → TorBox</strong></div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-text">Paste your <strong>TorBox API key</strong></div>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div class="step-text">Done. Every addon you add now benefits from this automatically.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ADDONS -->
+      <section class="section" id="addons">
+        <div class="section-label">Addons</div>
+        <h2>Stream Addons</h2>
+
+        <h3>AIOStreams</h3>
+        <p>The backbone of the setup. AIOStreams is a super-addon that pulls from multiple scrapers, deduplicates results, and sorts everything by quality. Saves you from seeing the same file listed 10 times from different sources.</p>
+
+        <div class="card-row">
+          <div class="mini-card">
+            <div class="mini-card-icon">⚡</div>
+            <h4>Primary Instance</h4>
+            <p>Viren's hosted instance — reliable and fast</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-icon">🛡️</div>
+            <h4>Backup Instance</h4>
+            <p>ElfHosted — solid fallback if primary is down</p>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-dots">
+              <div class="code-dot dot-r"></div>
+              <div class="code-dot dot-y"></div>
+              <div class="code-dot dot-g"></div>
+            </div>
+            <div class="code-label">Primary</div>
+          </div>
+          <div class="code-body">https://aiostreams.viren070.me</div>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-dots">
+              <div class="code-dot dot-r"></div>
+              <div class="code-dot dot-y"></div>
+              <div class="code-dot dot-g"></div>
+            </div>
+            <div class="code-label">Backup</div>
+          </div>
+          <div class="code-body">https://aiostreams.elfhosted.com</div>
+        </div>
+
+        <p>Add Torrentio and Comet as sources inside AIOStreams. Connect your TorBox API key there too so it can filter and prioritize cached results. AIOStreams Nightly has the latest features including full SEL (Stream Expression Language) for advanced filtering — worth using over stable.</p>
+
+        <h3>Torrentio + Comet</h3>
+        <p>The two best torrent scrapers. They cover different indexers so running both gives you much better hit rates on anything you search for.</p>
+
+        <div class="tip" style="margin: 1rem 0; border-left-color: var(--tb-cyan);">
+          <div class="tip-icon">⚠️</div>
+          <p><strong>Important:</strong> when generating your Comet or Torrentio manifest URL, <strong>leave the debrid field empty</strong>. Since TorBox is already configured in Nuvio's Connected Services, it handles authentication automatically. Your manifest links stay clean and aren't tied to your credentials.</p>
+        </div>
+
+        <h3>Fusion</h3>
+        <p>Nuvio-native addon for home screen catalogs and widgets. Not required for streams but useful for organization if you want control over your home screen layout.</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- BADGES -->
+      <section class="section" id="badges">
+        <div class="section-label">Visual Customization</div>
+        <h2>Stream Badges</h2>
+        <p>Nuvio overlays visual tags on each stream result — <strong>4K</strong>, <strong>HDR10+</strong>, <strong>Dolby Atmos</strong>, <strong>TrueHD</strong>, <strong>REMUX</strong>, and more. Makes picking a stream instant without reading raw filenames.</p>
+
+        <div class="step-list">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text">Go to <strong>Settings → Connected Services → Badge URLs</strong></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text">Paste the BetterFormatter preset URL below</div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text">Hit <strong>Import</strong></div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-dots">
+              <div class="code-dot dot-r"></div>
+              <div class="code-dot dot-y"></div>
+              <div class="code-dot dot-g"></div>
+            </div>
+            <div class="code-label">Badge URL — BetterFormatter preset</div>
+          </div>
+          <div class="code-body">https://raw.githubusercontent.com/9mousaa/BetterFormatter/main/presets/colored-bgb-combo-nodv.json</div>
+        </div>
+
+        <p style="font-size:0.85rem; color: var(--tb-muted);">Credit: <a href="https://github.com/9mousaa/BetterFormatter" style="color: var(--tb-violet); text-decoration:none;">9mousaa/BetterFormatter</a></p>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- FULL STACK -->
+      <section class="section" id="stack">
+        <div class="section-label">Overview</div>
+        <h2>Full Stack at a Glance</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>TorBox</td>
+                <td><span class="role-badge">Debrid</span> — instant cached stream access</td>
+              </tr>
+              <tr>
+                <td>Nuvio</td>
+                <td><span class="role-badge">Client</span> — handles playback and debrid auth</td>
+              </tr>
+              <tr>
+                <td>AIOStreams</td>
+                <td><span class="role-badge">Aggregator</span> — consolidates and deduplicates all streams</td>
+              </tr>
+              <tr>
+                <td>Torrentio</td>
+                <td><span class="role-badge">Scraper</span> — torrent indexer coverage</td>
+              </tr>
+              <tr>
+                <td>Comet</td>
+                <td><span class="role-badge">Scraper</span> — additional indexer coverage</td>
+              </tr>
+              <tr>
+                <td>BetterFormatter</td>
+                <td><span class="role-badge">UI</span> — visual badge overlays in Nuvio</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- TIPS -->
+      <section class="section" id="tips">
+        <div class="section-label">Best Practices</div>
+        <h2>Tips</h2>
+
+        <div class="tip-list">
+          <div class="tip">
+            <div class="tip-icon">🔑</div>
+            <p><strong>One API key, everywhere.</strong> Configure TorBox once in Nuvio Connected Services. Every addon benefits without you touching individual configs.</p>
+          </div>
+          <div class="tip">
+            <div class="tip-icon">🧹</div>
+            <p><strong>Clean manifest URLs.</strong> Never bake your debrid credentials into Torrentio or Comet manifest links. Nuvio handles it at the app level.</p>
+          </div>
+          <div class="tip">
+            <div class="tip-icon">🛠</div>
+            <p><strong>Use AIOStreams Nightly.</strong> It has the latest features including full SEL (Stream Expression Language) for advanced stream filtering and sorting.</p>
+          </div>
+          <div class="tip">
+            <div class="tip-icon">⚡</div>
+            <p><strong>Cache hit rates are real.</strong> TorBox's instant availability on popular content is genuinely impressive — most things play immediately without any wait.</p>
+          </div>
+        </div>
+      </section>
+
+    </article>
+  </div>
+</div>
+
+<div class="guide-footer">
+  Built for the Nuvio community &nbsp;·&nbsp; Happy streaming
+</div>
+
+</div>
+<script src="{{ "js/torbox-guide.js" | relURL }}"></script>
+{{ end }}

@@ -6,7 +6,5 @@
   <!-- Site title -->
   <text x="120" y="280" font-family="Georgia, serif" font-size="96" font-weight="700" font-style="italic" fill="#E8E6E0" letter-spacing="-2">Ember</text>
   <!-- Tagline -->
-  <text x="120" y="350" font-family="Georgia, serif" font-size="32" fill="#8A8894">Words on the page.</text>
-  <!-- URL hint -->
-  <text x="120" y="520" font-family="system-ui, sans-serif" font-size="22" fill="#4A4A55">yourdomain.com</text>
+  <text x="120" y="350" font-family="Georgia, serif" font-size="32" fill="#8A8894">A digital archive of useful knowledge.</text>
 </svg>

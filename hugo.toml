@@ -1,5 +1,5 @@
 baseURL = "https://hugo-eight-ochre.vercel.app"
-languageCode = "en-us"
+locale = "en-us"
 title = "Ember"
 theme = "ember"
 [pagination]
@@ -10,8 +10,8 @@ hasCJKLanguage = false
 
 [params]
   author = "Gem"
-  description = "Writing on literature, technology, and the space between."
-  tagline = "Guides, streaming tools, Linux, and digital workflows."
+  description = "A digital archive of useful knowledge — guides, workflows, and research for Linux, open-source software, streaming ecosystems, privacy, and self-hosting."
+  tagline = "A digital archive of useful knowledge."
   email = ""
   # Social links (leave empty to hide)
   github = ""
@@ -31,21 +31,25 @@ hasCJKLanguage = false
 
 [menu]
   [[menu.main]]
-    name = "Writing"
-    url = "/posts/"
+    name = "Home"
+    url = "/"
     weight = 1
+  [[menu.main]]
+    name = "Guides"
+    url = "/guides/"
+    weight = 2
   [[menu.main]]
     name = "Categories"
     url = "/categories/"
-    weight = 2
+    weight = 3
   [[menu.main]]
     name = "About"
     url = "/pages/about/"
-    weight = 3
+    weight = 4
   [[menu.main]]
     name = "Support"
     url = "/donate/"
-    weight = 4
+    weight = 5
 
 [taxonomies]
   category = "categories"

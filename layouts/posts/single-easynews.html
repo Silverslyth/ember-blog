@@ -1,0 +1,339 @@
+{{ define "main" }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ "css/easynews-guide.css" | relURL }}" />
+
+<div class="easynews-guide">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="scanlines"></div>
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+
+  <div class="hero-inner">
+
+    <div class="terminal" id="terminal-block">
+      <div class="term-col">
+        <div class="term-header amber">
+          <span class="term-dot amber"></span> EasyNews
+        </div>
+        <div class="term-line" data-delay="200"><span class="hi">source</span>  <span class="amber">Usenet (NNTP)</span></div>
+        <div class="term-line" data-delay="400"><span class="hi">age</span>     <span class="green">30+ years</span></div>
+        <div class="term-line" data-delay="600"><span class="hi">cache</span>   <span class="amber">indexed archive</span></div>
+        <div class="term-line" data-delay="800"><span class="hi">speed</span>   <span class="green">very fast</span></div>
+        <div class="term-line" data-delay="1000"><span class="hi">old</span>     <span class="green">strong</span></div>
+        <div class="term-line" data-delay="1200"><span class="hi">niche</span>  <span class="amber">varies</span></div>
+      </div>
+      <div class="term-col">
+        <div class="term-header rust">
+          <span class="term-dot rust"></span> Debrid
+        </div>
+        <div class="term-line" data-delay="300"><span class="hi">source</span>  <span style="color:#FB923C">Torrents + hosters</span></div>
+        <div class="term-line" data-delay="500"><span class="hi">age</span>     <span class="red">2–3 yrs typical</span></div>
+        <div class="term-line" data-delay="700"><span class="hi">cache</span>   <span style="color:#FB923C">demand-driven</span></div>
+        <div class="term-line" data-delay="900"><span class="hi">speed</span>   <span class="green">very fast</span></div>
+        <div class="term-line" data-delay="1100"><span class="hi">old</span>     <span class="red">weak</span></div>
+        <div class="term-line" data-delay="1300"><span class="hi">niche</span>  <span class="red">poor</span></div>
+      </div>
+    </div>
+
+    <h1>EasyNews <em>vs</em> Debrid<br>for Older Content</h1>
+    <p class="hero-sub">
+      Debrid is unbeatable for anything people are watching right now. For everything else — classic films, obscure anime, niche documentaries — the answer is more complicated.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Usenet</span>
+      <span class="tag">TorBox</span>
+      <span class="tag">Real-Debrid</span>
+      <span class="tag">AIOStreams</span>
+      <span class="tag">Nuvio</span>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE CONTENT -->
+<div class="page">
+
+  <!-- STICKY NAV -->
+  <nav class="sticky-nav" id="sticky-nav">
+    <a href="#how-debrid-works">How Debrid Works</a>
+    <a href="#the-problem">The Problem</a>
+    <a href="#easynews-intro">EasyNews</a>
+    <a href="#comparison">Comparison</a>
+    <a href="#use-cases">Use Cases</a>
+    <a href="#setup">Setup</a>
+    <a href="#verdict">Verdict</a>
+  </nav>
+
+  <!-- HOW DEBRID WORKS -->
+  <section class="section" id="how-debrid-works">
+    <div class="eyebrow">Context</div>
+    <h2>How Debrid Actually Works</h2>
+    <p>Debrid services — TorBox, Real-Debrid, AllDebrid — act as high-speed torrent downloaders that cache files on their own servers. When you request something, they check if it's already cached. If it is, you stream it instantly at full speed. If it isn't, they have to download it fresh, which means a wait.</p>
+    <p>The key word is <strong>cache</strong>. Cache is built by demand. Popular content that thousands of people are downloading right now gets cached immediately and stays hot. The system works brilliantly for exactly that use case.</p>
+
+    <div class="callout">
+      <p><strong>The mechanism:</strong> Debrid caches are demand-driven. A torrent gets cached when enough users request it. Old or obscure content that nobody is actively downloading has little or no cache presence — so you either wait for a fresh download or get nothing.</p>
+    </div>
+  </section>
+
+  <div class="dot-divider"><span></span></div>
+
+  <!-- THE PROBLEM -->
+  <section class="section" id="the-problem">
+    <div class="eyebrow">The Gap</div>
+    <h2>Where Debrid Fails You</h2>
+    <p>If you have niche taste — and most people reading this do — you will run into debrid's ceiling sooner or later. It shows up in predictable ways:</p>
+
+    <div class="use-grid">
+      <div class="use-card">
+        <span class="use-icon">🎌</span>
+        <h4>Older Anime</h4>
+        <p>Anything pre-2010, especially lesser-known series. Cache hit rates drop dramatically. Dual audio rare releases are the worst case.</p>
+      </div>
+      <div class="use-card">
+        <span class="use-icon">🎬</span>
+        <h4>Classic Cinema</h4>
+        <p>Foreign-language films, arthouse, Criterion-adjacent stuff. If it's not in the mainstream torrent ecosystem right now, debrid won't have it cached.</p>
+      </div>
+      <div class="use-card">
+        <span class="use-icon">📺</span>
+        <h4>Old TV</h4>
+        <p>Complete series from the 80s and 90s, obscure cable content, regional productions. These exist on Usenet in ways they often don't on active torrent trackers.</p>
+      </div>
+      <div class="use-card">
+        <span class="use-icon">🌍</span>
+        <h4>Regional & Niche</h4>
+        <p>K-dramas from 2008, Thai films, Moroccan cinema, old BBC documentaries. Small global audiences mean almost no debrid cache presence.</p>
+      </div>
+    </div>
+
+    <p>The failure mode is silent and frustrating: you search, you get a spinner, you get dead links or buffers. You don't always know why.</p>
+  </section>
+
+  <div class="dot-divider"><span></span></div>
+
+  <!-- EASYNEWS INTRO -->
+  <section class="section" id="easynews-intro">
+    <div class="eyebrow">The Alternative</div>
+    <h2>What EasyNews Actually Is</h2>
+    <p>EasyNews is a Usenet provider with a built-in search interface and HTTP-based file access. Usenet is a distributed newsgroup network that's been accumulating content since the 1980s. The retention on modern Usenet providers is measured in decades, not months.</p>
+    <p>Unlike torrents, Usenet content doesn't go away when seeders stop. A file posted to Usenet in 2002 is still there as long as the provider retains it. EasyNews specifically offers a search-and-stream interface that plugs into tools like AIOStreams, making it act like any other stream source inside Nuvio.</p>
+
+    <h3>Why the Archive Is Different</h3>
+    <p>Usenet's content model is fundamentally different from torrents. It was built for distribution and retention, not for peer-to-peer sharing. The NZB binary archive contains things that fell off the active torrent ecosystem years ago but were preserved on Usenet by communities that cared about them at the time.</p>
+
+    <div class="callout">
+      <p><strong>Retention window:</strong> EasyNews retains binary content for over 3,700 days (~10 years). Compare that to torrent trackers where a title's active seeding often drops to zero within months of release hype dying down.</p>
+    </div>
+
+    <h3>The Catch</h3>
+    <p>EasyNews is not a replacement for debrid. It's a supplement. The Usenet binary ecosystem has its own gaps — very niche regional content may not have had Usenet posters maintaining it, and quality consistency varies. You also pay separately: EasyNews has its own subscription on top of your debrid costs.</p>
+
+    <div class="callout rust">
+      <p><strong>Cost reality:</strong> EasyNews plans start around $10/month. Running it alongside a debrid subscription adds to your stack cost. For casual users, the overlap may not justify it. For people with serious niche taste, it often does.</p>
+    </div>
+  </section>
+
+  <div class="dot-divider"><span></span></div>
+
+  <!-- COMPARISON TABLE -->
+  <section class="section" id="comparison">
+    <div class="eyebrow">Head to Head</div>
+    <h2>EasyNews vs Debrid — Full Comparison</h2>
+
+    <div style="overflow-x:auto; border-radius:12px; border:1px solid var(--en-border);">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Criterion</th>
+            <th>EasyNews (Usenet)</th>
+            <th>Debrid (TorBox etc.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Content source</td>
+            <td><strong>Usenet binary archive</strong> — static, preserved</td>
+            <td><strong>Torrent cache</strong> — demand-driven, volatile</td>
+          </tr>
+          <tr>
+            <td>Retention age</td>
+            <td><strong>10+ years</strong> of archived content <span class="badge-win">Wins</span></td>
+            <td><strong>Typically 2–3 years</strong> of hot cache <span class="badge-lose">Limited</span></td>
+          </tr>
+          <tr>
+            <td>Popular/new content</td>
+            <td><strong>Present but slower</strong> to find <span class="badge-lose">Loses</span></td>
+            <td><strong>Instant cache hits</strong>, huge selection <span class="badge-win">Wins</span></td>
+          </tr>
+          <tr>
+            <td>Niche/obscure</td>
+            <td><strong>Often has it</strong> via NZB archive <span class="badge-win">Wins</span></td>
+            <td><strong>Rarely cached</strong>, dead links common <span class="badge-lose">Loses</span></td>
+          </tr>
+          <tr>
+            <td>Old anime</td>
+            <td><strong>Strong</strong> — large Usenet anime communities historically <span class="badge-win">Wins</span></td>
+            <td><strong>Weak</strong> — old dual-audio releases rarely seeded <span class="badge-lose">Loses</span></td>
+          </tr>
+          <tr>
+            <td>Stream speed</td>
+            <td><strong>Fast</strong> — HTTP direct, no P2P overhead <span class="badge-tie">Even</span></td>
+            <td><strong>Fast</strong> — cached torrents are essentially CDN <span class="badge-tie">Even</span></td>
+          </tr>
+          <tr>
+            <td>Quality ceiling</td>
+            <td><strong>Varies</strong> — depends on what was posted <span class="badge-lose">Lower</span></td>
+            <td><strong>High</strong> — 4K remuxes, web-DL, all formats <span class="badge-win">Wins</span></td>
+          </tr>
+          <tr>
+            <td>4K & HDR</td>
+            <td><strong>Limited</strong> — Usenet 4K uploads are sparse <span class="badge-lose">Loses</span></td>
+            <td><strong>Excellent</strong> — 4K remux, HDR10+, DV all available <span class="badge-win">Wins</span></td>
+          </tr>
+          <tr>
+            <td>K-Drama / C-Drama</td>
+            <td><strong>Mixed</strong> — older titles exist, newer content less reliable <span class="badge-tie">Mixed</span></td>
+            <td><strong>Good for recent</strong>, weak for anything pre-2018 <span class="badge-tie">Mixed</span></td>
+          </tr>
+          <tr>
+            <td>Cost</td>
+            <td><strong>~$10/mo extra</strong> on top of debrid <span class="badge-lose">Additional</span></td>
+            <td><strong>~$3–5/mo</strong> (TorBox), covers most content <span class="badge-win">Cheaper</span></td>
+          </tr>
+          <tr>
+            <td>AIOStreams integration</td>
+            <td><strong>Yes</strong> — EasyNews addon available <span class="badge-win">Yes</span></td>
+            <td><strong>Yes</strong> — native support across all major addons <span class="badge-win">Yes</span></td>
+          </tr>
+          <tr>
+            <td>Setup complexity</td>
+            <td><strong>Moderate</strong> — separate account, addon config needed <span class="badge-lose">More work</span></td>
+            <td><strong>Simple</strong> — one API key in Nuvio, done <span class="badge-win">Easier</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="dot-divider"><span></span></div>
+
+  <!-- USE CASES -->
+  <section class="section" id="use-cases">
+    <div class="eyebrow">Decision Guide</div>
+    <h2>Which One You Actually Need</h2>
+
+    <div class="verdict">
+      <div class="verdict-card amber-card">
+        <div class="verdict-label amber">You need EasyNews if</div>
+        <h3>You Watch Old & Obscure</h3>
+        <ul>
+          <li>Pre-2010 anime is a regular watch</li>
+          <li>Classic film is a real part of your diet</li>
+          <li>You chase niche regional content</li>
+          <li>Old TV series with no active seeders</li>
+          <li>Debrid dead links are a recurring frustration</li>
+          <li>You're willing to pay extra to cover the gap</li>
+        </ul>
+      </div>
+      <div class="verdict-card rust-card">
+        <div class="verdict-label rust">Stick with debrid alone if</div>
+        <h3>You Watch Mostly Current</h3>
+        <ul>
+          <li>Mostly new releases and recent seasons</li>
+          <li>Popular anime that's actively seeded</li>
+          <li>4K and HDR quality is a priority</li>
+          <li>K-dramas from the last 3–4 years</li>
+          <li>You rarely hit dead links</li>
+          <li>Cost efficiency matters more</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rec-block">
+      <div class="rec-label">The Practical Approach</div>
+      <h3>Run Both, Stack the Coverage</h3>
+      <p>The cleanest setup for anyone with mixed taste is debrid as the primary source and EasyNews as a fallback through AIOStreams. You get instant cache hits on everything current, and Usenet fills in the gaps on old and obscure content. AIOStreams handles the deduplication so you never see the gap — it just works.</p>
+    </div>
+  </section>
+
+  <div class="dot-divider"><span></span></div>
+
+  <!-- SETUP -->
+  <section class="section" id="setup">
+    <div class="eyebrow">Configuration</div>
+    <h2>Adding EasyNews to Your Stack</h2>
+    <p>If you're already running AIOStreams + TorBox inside Nuvio, adding EasyNews is a contained change. You're adding one addon source inside AIOStreams — everything else stays the same.</p>
+
+    <h3>1. Get an EasyNews Account</h3>
+    <p>Sign up at <strong>easynews.com</strong>. They offer a free trial — worth using to test coverage for your specific content interests before committing.</p>
+
+    <h3>2. Add EasyNews Inside AIOStreams</h3>
+    <div class="setup-step">
+      <div class="setup-num">01</div>
+      <div class="setup-text">Open your AIOStreams instance (<code>aiostreams.viren070.me</code> or your backup) and go to <strong>Addon Sources</strong></div>
+    </div>
+    <div class="setup-step">
+      <div class="setup-num">02</div>
+      <div class="setup-text">Add the <strong>EasyNews</strong> source — enter your EasyNews username and password when prompted</div>
+    </div>
+    <div class="setup-step">
+      <div class="setup-num">03</div>
+      <div class="setup-text">Set EasyNews as a <strong>lower priority</strong> than your debrid-backed scrapers — you want debrid results first, EasyNews as fallback</div>
+    </div>
+    <div class="setup-step">
+      <div class="setup-num">04</div>
+      <div class="setup-text">Save and reinstall the AIOStreams manifest in Nuvio. EasyNews results will now appear in your stream list when debrid sources don't deliver</div>
+    </div>
+
+    <h3>Using SEL to Deprioritize EasyNews</h3>
+    <p>If you're on AIOStreams Nightly with SEL (Stream Expression Language), you can write filter rules that push EasyNews results to the bottom of the list unless nothing better is available. This keeps your stream picker clean for normal content while making the EasyNews fallback invisible until needed.</p>
+
+    <div class="code-block">
+      <div class="code-bar">
+        <div class="code-dots">
+          <div class="code-dot dot-r"></div>
+          <div class="code-dot dot-y"></div>
+          <div class="code-dot dot-g"></div>
+        </div>
+        <div class="code-lang">SEL — EasyNews as low priority</div>
+      </div>
+      <div class="code-body">// Sort: debrid-cached results first, EasyNews last
+SORT: cached DESC, source != "easynews" DESC, quality DESC</div>
+    </div>
+
+    <div class="callout">
+      <p><strong>No Nuvio changes needed.</strong> EasyNews through AIOStreams delivers streams over HTTP — Nuvio plays them the same way as anything else. Your TorBox connection in Connected Services is unaffected and still handles all your debrid results.</p>
+    </div>
+  </section>
+
+  <div class="dot-divider"><span></span></div>
+
+  <!-- VERDICT -->
+  <section class="section" id="verdict">
+    <div class="eyebrow">Bottom Line</div>
+    <h2>The Verdict</h2>
+    <p>Debrid wins on everything popular, everything recent, and everything high-quality. The cache hit rate on anything people are actively watching is genuinely impressive — TorBox in particular has gotten strong on this. For 90% of viewing habits, debrid alone is the right call.</p>
+    <p>EasyNews fills a real gap that debrid structurally cannot fix — not because debrid is poorly built, but because cache depends on demand, and old or obscure content simply doesn't have enough active demand to stay cached.</p>
+
+    <div class="rec-block" style="margin-top:2rem;">
+      <div class="rec-label">Final Recommendation</div>
+      <h3>Debrid first. EasyNews if you need the archive.</h3>
+      <p>Start with TorBox + AIOStreams + Torrentio + Comet. If you regularly hit dead links on older or niche content — add EasyNews as a source inside AIOStreams. Let the stack handle priority. You won't notice it's there until you need it, and then you'll be glad it is.</p>
+    </div>
+
+    <p style="margin-top:1.5rem; font-size:0.85rem;">Questions about the setup? Drop them below — happy to help troubleshoot specific content types or edge cases in your stack.</p>
+  </section>
+
+</div>
+
+<div class="guide-footer">
+  EasyNews vs Debrid Guide &nbsp;·&nbsp; For the Nuvio &amp; AIOStreams community
+</div>
+
+</div>
+<script src="{{ "js/easynews-guide.js" | relURL }}"></script>
+{{ end }}

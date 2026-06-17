@@ -1,0 +1,667 @@
+/* ===================================================
+   TorBox + Nuvio Guide — page-specific styles
+   Scoped to .torbox-guide wrapper to avoid theme conflicts
+=================================================== */
+
+.torbox-guide {
+  --tb-bg:        #0D0F14;
+  --tb-surface:   #141720;
+  --tb-card:      #1A1E2A;
+  --tb-border:    #252A38;
+  --tb-violet:    #7C3AED;
+  --tb-violet-dim:#4C1D95;
+  --tb-cyan:      #22D3EE;
+  --tb-text:      #E8E6F0;
+  --tb-muted:     #8B90A8;
+  --tb-mono:      'JetBrains Mono', monospace;
+  --tb-sans:      'Inter', sans-serif;
+  --tb-display:   'Space Grotesk', sans-serif;
+
+  font-family: var(--tb-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--tb-text);
+  background: var(--tb-bg);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+/* Override site container constraints */
+.torbox-guide-wrapper {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ── HERO ── */
+.torbox-guide .hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  overflow: hidden;
+}
+
+.torbox-guide .hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--tb-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tb-border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.4;
+}
+
+.torbox-guide .hero-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, var(--tb-bg) 100%);
+}
+
+.torbox-guide .scan-beam {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--tb-violet) 30%, var(--tb-cyan) 50%, var(--tb-violet) 70%, transparent 100%);
+  opacity: 0.6;
+  animation: tb-scan 4s ease-in-out infinite;
+  top: 0;
+}
+
+@keyframes tb-scan {
+  0%   { top: 0%;   opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.6; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.torbox-guide .hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.torbox-guide .glow-violet {
+  width: 600px; height: 600px;
+  background: var(--tb-violet-dim);
+  opacity: 0.25;
+  top: -100px; left: -100px;
+}
+
+.torbox-guide .glow-cyan {
+  width: 400px; height: 400px;
+  background: #0E7490;
+  opacity: 0.2;
+  bottom: 0; right: -50px;
+}
+
+.torbox-guide .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.torbox-guide .hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--tb-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--tb-cyan);
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  border-radius: 999px;
+  background: rgba(34, 211, 238, 0.05);
+}
+
+.torbox-guide .hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--tb-cyan);
+  box-shadow: 0 0 8px var(--tb-cyan);
+  animation: tb-pulse 2s ease-in-out infinite;
+}
+
+@keyframes tb-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+.torbox-guide .hero h1 {
+  font-family: var(--tb-display);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.torbox-guide .hero h1 .gradient-text {
+  background: linear-gradient(135deg, #A78BFA 0%, var(--tb-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.torbox-guide .hero-sub {
+  font-size: 1.125rem;
+  color: var(--tb-muted);
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+}
+
+.torbox-guide .hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  background: var(--tb-violet);
+  color: #fff;
+  font-family: var(--tb-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.torbox-guide .hero-cta:hover {
+  background: #6D28D9;
+  transform: translateY(-1px);
+}
+
+.torbox-guide .hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--tb-muted);
+  font-size: 0.7rem;
+  font-family: var(--tb-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 2;
+  animation: tb-fadeIn 1s 1s both;
+}
+
+.torbox-guide .hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--tb-violet), transparent);
+  animation: tb-scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes tb-scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.2); }
+}
+
+/* ── LAYOUT ── */
+.torbox-guide .page-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.torbox-guide .content-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 4rem;
+  align-items: start;
+  padding: 4rem 0 8rem;
+}
+
+/* ── SIDEBAR TOC ── */
+.torbox-guide .toc {
+  position: sticky;
+  top: 5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--tb-border);
+  border-radius: 12px;
+  background: var(--tb-card);
+}
+
+.torbox-guide .toc-label {
+  font-family: var(--tb-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--tb-muted);
+  margin-bottom: 1rem;
+}
+
+.torbox-guide .toc ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0;
+}
+
+.torbox-guide .toc a {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--tb-muted);
+  text-decoration: none;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+  line-height: 1.4;
+}
+
+.torbox-guide .toc a:hover {
+  color: var(--tb-text);
+  background: var(--tb-border);
+}
+
+.torbox-guide .toc a.active {
+  color: var(--tb-cyan);
+  background: rgba(34, 211, 238, 0.07);
+}
+
+/* ── ARTICLE ── */
+.torbox-guide .article {
+  min-width: 0;
+}
+
+.torbox-guide .section {
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.torbox-guide .section.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.torbox-guide .section-label {
+  font-family: var(--tb-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--tb-violet);
+  margin-bottom: 0.6rem;
+}
+
+.torbox-guide .section h2 {
+  font-family: var(--tb-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+  border-bottom: none;
+  color: var(--tb-text);
+}
+
+.torbox-guide .section h3 {
+  font-family: var(--tb-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 2rem 0 0.75rem;
+  color: #C4B5FD;
+}
+
+.torbox-guide .section p {
+  color: #B8B6CC;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+/* ── CARDS ── */
+.torbox-guide .card {
+  background: var(--tb-card);
+  border: 1px solid var(--tb-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.torbox-guide .card-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.torbox-guide .mini-card {
+  background: var(--tb-card);
+  border: 1px solid var(--tb-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.torbox-guide .mini-card-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: var(--tb-violet-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.torbox-guide .mini-card h4 {
+  font-family: var(--tb-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--tb-text);
+}
+
+.torbox-guide .mini-card p {
+  font-size: 0.8rem;
+  color: var(--tb-muted);
+  margin: 0;
+}
+
+/* ── CODE BLOCK ── */
+.torbox-guide .code-block {
+  background: #0A0C11;
+  border: 1px solid var(--tb-border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.torbox-guide .code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--tb-border);
+  background: var(--tb-card);
+}
+
+.torbox-guide .code-dots {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.torbox-guide .code-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+
+.torbox-guide .dot-r { background: #FF5F56; }
+.torbox-guide .dot-y { background: #FFBD2E; }
+.torbox-guide .dot-g { background: #27C93F; }
+
+.torbox-guide .code-label {
+  font-family: var(--tb-mono);
+  font-size: 0.65rem;
+  color: var(--tb-muted);
+  letter-spacing: 0.1em;
+}
+
+.torbox-guide .code-body {
+  padding: 1.25rem 1.5rem;
+  font-family: var(--tb-mono);
+  font-size: 0.82rem;
+  color: var(--tb-cyan);
+  white-space: pre-wrap;
+  word-break: break-all;
+  line-height: 1.7;
+}
+
+/* ── STEP LIST ── */
+.torbox-guide .step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.25rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.torbox-guide .step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.torbox-guide .step-num {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--tb-violet-dim);
+  border: 1px solid var(--tb-violet);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--tb-mono);
+  font-size: 0.7rem;
+  color: #C4B5FD;
+  margin-top: 0.1rem;
+}
+
+.torbox-guide .step-text {
+  font-size: 0.9rem;
+  color: #B8B6CC;
+  font-weight: 300;
+}
+
+.torbox-guide .step-text strong {
+  color: var(--tb-text);
+  font-weight: 500;
+}
+
+/* ── TABLE ── */
+.torbox-guide .table-wrap {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid var(--tb-border);
+  margin: 1.25rem 0;
+}
+
+.torbox-guide .table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.torbox-guide .table-wrap thead th {
+  background: var(--tb-card);
+  padding: 0.85rem 1.25rem;
+  text-align: left;
+  font-family: var(--tb-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tb-muted);
+  border-bottom: 1px solid var(--tb-border);
+}
+
+.torbox-guide .table-wrap tbody tr {
+  border-bottom: 1px solid var(--tb-border);
+  transition: background 0.15s;
+}
+
+.torbox-guide .table-wrap tbody tr:last-child { border-bottom: none; }
+.torbox-guide .table-wrap tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.torbox-guide .table-wrap tbody td {
+  padding: 0.85rem 1.25rem;
+  color: #B8B6CC;
+  font-weight: 300;
+}
+
+.torbox-guide .table-wrap tbody td:first-child {
+  font-family: var(--tb-display);
+  font-weight: 600;
+  color: var(--tb-text);
+}
+
+.torbox-guide .role-badge {
+  display: inline-block;
+  font-family: var(--tb-mono);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: #C4B5FD;
+}
+
+/* ── TIPS ── */
+.torbox-guide .tip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.torbox-guide .tip {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  background: var(--tb-card);
+  border: 1px solid var(--tb-border);
+  border-left: 3px solid var(--tb-violet);
+  border-radius: 0 8px 8px 0;
+}
+
+.torbox-guide .tip-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.torbox-guide .tip p {
+  font-size: 0.875rem;
+  margin: 0;
+  color: #B8B6CC;
+  font-weight: 300;
+}
+
+.torbox-guide .tip strong { color: var(--tb-text); font-weight: 500; }
+
+/* ── REFERRAL BANNER ── */
+.torbox-guide .referral-banner {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--tb-violet-dim) 0%, #1E1035 100%);
+  border: 1px solid var(--tb-violet);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.torbox-guide .referral-banner::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: var(--tb-violet);
+  opacity: 0.08;
+  border-radius: 50%;
+}
+
+.torbox-guide .referral-text h3 {
+  font-family: var(--tb-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--tb-text);
+  margin-bottom: 0.4rem;
+}
+
+.torbox-guide .referral-text p {
+  font-size: 0.875rem;
+  color: #C4B5FD;
+  margin: 0;
+}
+
+.torbox-guide .referral-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--tb-violet);
+  color: #fff;
+  font-family: var(--tb-display);
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.torbox-guide .referral-btn:hover { background: #6D28D9; }
+
+/* ── DIVIDER ── */
+.torbox-guide .divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--tb-border), transparent);
+  margin: 3rem 0;
+}
+
+/* ── FOOTER (article footer) ── */
+.torbox-guide .guide-footer {
+  border-top: 1px solid var(--tb-border);
+  padding: 2rem;
+  text-align: center;
+  font-family: var(--tb-mono);
+  font-size: 0.7rem;
+  color: var(--tb-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes tb-fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.torbox-guide .hero-content > * {
+  animation: tb-fadeIn 0.6s ease both;
+}
+
+.torbox-guide .hero-content .hero-eyebrow { animation-delay: 0.1s; }
+.torbox-guide .hero-content h1            { animation-delay: 0.25s; }
+.torbox-guide .hero-content .hero-sub     { animation-delay: 0.4s; }
+.torbox-guide .hero-content .hero-cta     { animation-delay: 0.55s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .torbox-guide .content-grid {
+    grid-template-columns: 1fr;
+  }
+  .torbox-guide .toc { display: none; }
+  .torbox-guide .card-row { grid-template-columns: 1fr; }
+  .torbox-guide .referral-banner { flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .torbox-guide .scan-beam,
+  .torbox-guide .hero-scroll-line { animation: none; }
+  .torbox-guide .section { opacity: 1; transform: none; }
+}

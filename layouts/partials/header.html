@@ -4,7 +4,6 @@
     {{ range .Site.Menus.main }}
       <li><a href="{{ .URL }}" class="{{ if (eq $.RelPermalink .URL) }}is-active{{ end }}">{{ .Name }}</a></li>
     {{ end }}
-    <li><a href="{{ "/guides/nuvio-migration/" | relURL }}" class="{{ if hasPrefix $.RelPermalink "/guides/" }}is-active{{ end }}">Guides</a></li>
     {{ if .Site.Params.searchEnabled }}
       <li><button id="search-toggle" class="nav-search-btn" aria-label="Search" aria-expanded="false">Search</button></li>
     {{ end }}
