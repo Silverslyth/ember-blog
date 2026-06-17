@@ -81,7 +81,7 @@
   </nav>
 </header>
 
-{{/* Search modal — modern documentation search (Linear / Raycast / Vercel style) */}}
+{{/* Search modal — premium command palette (Linear · Raycast · Arc · Vercel) */}}
 {{ if .Site.Params.searchEnabled }}
 <div class="search-overlay" id="search-overlay" aria-modal="true" role="dialog" aria-label="Search" data-popular='{{ .Site.Params.searchPopular | jsonify }}' hidden>
   <div class="search-modal">
@@ -89,12 +89,12 @@
       <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
-      <input type="text" id="search-input" class="search-field" placeholder="Search guides, workflows, tools..." autocomplete="off" spellcheck="false" aria-label="Search" />
+      <input type="text" id="search-input" class="search-field" placeholder="Search the archive..." autocomplete="off" spellcheck="false" aria-label="Search" />
       <kbd class="search-kbd" id="search-kbd-hint">⌘K</kbd>
     </div>
 
     <div class="search-body" id="search-body">
-      {{/* Empty state: recent + popular */}}
+      {{/* Empty state: recent + popular + keyboard hints */}}
       <div class="search-start" id="search-start">
         <div class="search-panels">
           <div class="search-panel" id="search-recent-panel" hidden>
@@ -107,7 +107,7 @@
           </div>
         </div>
         <div class="search-filters" id="search-filters">
-          <span class="search-filter-label">Filter by</span>
+          <span class="search-filter-label">Filter</span>
           <button class="search-filter-chip is-active" data-category="">All</button>
         </div>
       </div>
@@ -115,15 +115,21 @@
       {{/* Results */}}
       <div class="search-results" id="search-results" hidden></div>
       <div class="search-empty" id="search-empty" hidden>
+        <div class="search-empty-icon">⚐</div>
         <p>No results found.</p>
-        <p class="search-empty-hint">Try a different search term or browse <a href="/categories/">categories</a>.</p>
+        <p class="search-empty-hint">Try a different term or browse <a href="/categories/">categories</a>.</p>
       </div>
     </div>
 
     <div class="search-footer">
+      <span class="search-footer-row">
+        <kbd>↑↓</kbd> navigate
+        <span class="search-footer-dot"></span>
+        <kbd>↵</kbd> open
+      </span>
       <span id="search-count-label"></span>
-      <span class="search-shortcuts">
-        <kbd>↑↓</kbd> navigate <kbd>↵</kbd> open <kbd>esc</kbd> close
+      <span class="search-footer-row">
+        <kbd>esc</kbd> close
       </span>
     </div>
   </div>
