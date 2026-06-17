@@ -1,96 +1,146 @@
 {{ define "main" }}
-<div class="container">
+<div class="home-wrap">
 
   {{/* Hero */}}
   <section class="home-hero">
-    <p class="hero-eyebrow">Digital Archive</p>
-    <h1 class="hero-title">{{ .Site.Params.tagline }}</h1>
-    <p class="hero-desc">{{ .Site.Params.description }}</p>
+    <div class="container">
+      <span class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Digital Archive
+      </span>
+      <h1 class="hero-title">A structured archive<br>of technical knowledge.</h1>
+      <p class="hero-desc">Guides, workflows, and research for Linux, open-source software, streaming ecosystems, privacy, and self-hosting — built for people who want to understand, not just copy-paste.</p>
+      <div class="hero-actions">
+        <a href="{{ "/guides/" | relURL }}" class="btn btn--primary">Browse Guides</a>
+        <a href="{{ "/categories/" | relURL }}" class="btn btn--ghost">All Categories →</a>
+      </div>
+    </div>
   </section>
 
-  {{/* Browse the Archive */}}
-  <nav class="archive-nav" aria-label="Archive navigation">
-    <a href="{{ "/guides/" | relURL }}" class="archive-nav-card">
-      <span class="archive-nav-icon">📋</span>
-      <span class="archive-nav-label">Guides</span>
-      <span class="archive-nav-desc">Step-by-step walkthroughs</span>
-    </a>
-    <a href="{{ "/categories/" | relURL }}" class="archive-nav-card">
-      <span class="archive-nav-icon">📂</span>
-      <span class="archive-nav-label">Categories</span>
-      <span class="archive-nav-desc">Browse by topic</span>
-    </a>
-    <a href="{{ "/qa/" | relURL }}" class="archive-nav-card">
-      <span class="archive-nav-icon">💬</span>
-      <span class="archive-nav-label">Q&A</span>
-      <span class="archive-nav-desc">Ask questions, discuss</span>
-    </a>
-    <a href="{{ "/pages/about/" | relURL }}" class="archive-nav-card">
-      <span class="archive-nav-icon">📖</span>
-      <span class="archive-nav-label">About</span>
-      <span class="archive-nav-desc">What this archive is</span>
-    </a>
-  </nav>
+  {{/* Archive Navigation */}}
+  <div class="container">
+    <nav class="archive-nav" aria-label="Archive navigation">
+      <a href="{{ "/guides/" | relURL }}" class="archive-nav-card">
+        <div class="archive-nav-icon-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
+        </div>
+        <div class="archive-nav-content">
+          <span class="archive-nav-label">Guides</span>
+          <span class="archive-nav-desc">Step-by-step walkthroughs</span>
+        </div>
+        <svg class="archive-nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+      <a href="{{ "/categories/" | relURL }}" class="archive-nav-card">
+        <div class="archive-nav-icon-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <div class="archive-nav-content">
+          <span class="archive-nav-label">Categories</span>
+          <span class="archive-nav-desc">Browse by topic</span>
+        </div>
+        <svg class="archive-nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+      <a href="{{ "/qa/" | relURL }}" class="archive-nav-card">
+        <div class="archive-nav-icon-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="archive-nav-content">
+          <span class="archive-nav-label">Q&A</span>
+          <span class="archive-nav-desc">Questions &amp; discussion</span>
+        </div>
+        <svg class="archive-nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+      <a href="{{ "/pages/about/" | relURL }}" class="archive-nav-card">
+        <div class="archive-nav-icon-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </div>
+        <div class="archive-nav-content">
+          <span class="archive-nav-label">About</span>
+          <span class="archive-nav-desc">What this archive is</span>
+        </div>
+        <svg class="archive-nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </nav>
+  </div>
 
   {{/* Featured post (most recent) */}}
   {{ $posts := where .Site.RegularPages "Type" "posts" }}
   {{ $featured := index $posts 0 }}
   {{ with $featured }}
-  <section class="featured-post" aria-label="Featured post">
-    <a href="{{ .Permalink }}" class="featured-card">
-      <div class="featured-card-inner">
-        <div class="featured-card-top">
+  <div class="container">
+    <section class="featured-post" aria-label="Featured post">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        Featured
+      </div>
+      <a href="{{ .Permalink }}" class="featured-card">
+        <div class="featured-card-inner">
           {{ with .Params.categories }}
             {{ range first 1 . }}
-              <span class="archive-badge archive-badge--{{ . | urlize }} archive-badge--lg">{{ . }}</span>
+              <span class="archive-badge">{{ . }}</span>
             {{ end }}
           {{ end }}
+          <h2 class="featured-title">{{ .Title }}</h2>
+          <p class="featured-excerpt">{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 200 }}{{ end }}</p>
+          <div class="featured-card-footer">
+            <div class="featured-meta">
+              <span class="meta-item">{{ if lt .ReadingTime 1 }}1{{ else }}{{ .ReadingTime }}{{ end }} min read</span>
+              <span class="meta-sep">·</span>
+              <span class="meta-item">{{ .Date.Format "Jan 2, 2006" }}</span>
+            </div>
+            <span class="featured-cta">
+              Read post
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
         </div>
-        <h2 class="featured-title">{{ .Title }}</h2>
-        <p class="featured-excerpt">{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 200 }}{{ end }}</p>
-        <div class="featured-card-meta">
-          <span>{{ if lt .ReadingTime 1 }}1{{ else }}{{ .ReadingTime }}{{ end }} min read</span>
-          <span class="archive-card-sep">·</span>
-          <span>{{ .Date.Format "Jan 2, 2006" }}</span>
-        </div>
-        <span class="featured-cta">Read post →</span>
-      </div>
-    </a>
-  </section>
+      </a>
+    </section>
+  </div>
   {{ end }}
 
   {{/* Post grid — skip featured */}}
   {{ $rest := after 1 $posts }}
   {{ if $rest }}
-  <section class="posts-grid-section">
-    <div class="section-header">
-      <h2 class="section-title">Recent Discoveries</h2>
-      <a href="{{ "/posts/" | relURL }}" class="see-all">See all →</a>
-    </div>
-    <div class="posts-grid">
-      {{ range first 6 $rest }}
-        {{ partial "post-card.html" . }}
-      {{ end }}
-    </div>
-  </section>
+  <div class="container">
+    <section class="posts-grid-section">
+      <div class="section-header">
+        <div class="section-label">
+          <span class="section-label-dot"></span>
+          Recent Entries
+        </div>
+        <a href="{{ "/posts/" | relURL }}" class="see-all">View all <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="posts-grid">
+        {{ range first 6 $rest }}
+          {{ partial "post-card.html" . }}
+        {{ end }}
+      </div>
+    </section>
+  </div>
   {{ end }}
 
   {{/* Categories */}}
   {{ $categories := .Site.Taxonomies.categories }}
   {{ if $categories }}
-  <section class="categories-section">
-    <div class="section-header">
-      <h2 class="section-title">Browse by category</h2>
-      <a href="{{ "/categories/" | relURL }}" class="see-all">All categories →</a>
-    </div>
-    <div class="category-chips">
-      {{ range $name, $pages := $categories }}
-        <a href="{{ "/categories/" | relURL }}{{ $name | urlize }}" class="category-chip">
-          {{ $name }}<span class="chip-count">{{ len $pages }}</span>
-        </a>
-      {{ end }}
-    </div>
-  </section>
+  <div class="container">
+    <section class="categories-section">
+      <div class="section-header">
+        <div class="section-label">
+          <span class="section-label-dot"></span>
+          Topics
+        </div>
+        <a href="{{ "/categories/" | relURL }}" class="see-all">All topics <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="category-chips">
+        {{ range $name, $pages := $categories }}
+          <a href="{{ "/categories/" | relURL }}{{ $name | urlize }}" class="category-chip">
+            <span class="chip-name">{{ $name }}</span><span class="chip-count">{{ len $pages }}</span>
+          </a>
+        {{ end }}
+      </div>
+    </section>
+  </div>
   {{ end }}
 
 </div>
