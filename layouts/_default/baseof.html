@@ -995,76 +995,201 @@
       font-size: .95rem;
     }
 
-    /* ── SEARCH OVERLAY ── */
+    /* ── COMMAND PALETTE ──────────────────────────── */
     .search-overlay {
       position: fixed;
       inset: 0;
       z-index: 200;
-      background: rgba(10,11,18,0.92);
-      backdrop-filter: blur(8px);
+      background: rgba(4,5,12,0.88);
+      backdrop-filter: blur(12px);
       display: flex;
       align-items: flex-start;
       justify-content: center;
-      padding-top: 15vh;
+      padding-top: 18vh;
     }
 
     .search-overlay[hidden] { display: none; }
 
-    .search-box {
+    .cmd-palette {
       width: 100%;
-      max-width: 560px;
+      max-width: 600px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.7), 0 0 0 1px rgba(124,92,252,.12);
       overflow: hidden;
+      animation: cmdIn .15s ease;
     }
 
-    .search-box label { display: none; }
+    @keyframes cmdIn {
+      from { opacity: 0; transform: translateY(-8px) scale(.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
 
-    .search-input {
-      width: 100%;
+    /* ── Input row ── */
+    .cmd-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .875rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cmd-prompt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      color: var(--violet);
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .cmd-input {
+      flex: 1;
       background: transparent;
       border: none;
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 1.25rem;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .92rem;
       color: var(--text);
       outline: none;
+      caret-color: var(--violet);
     }
 
-    .search-input::placeholder { color: var(--muted); }
+    .cmd-input::placeholder { color: var(--border); }
 
-    .search-results {
-      max-height: 50vh;
-      overflow-y: auto;
-    }
-
-    .search-result, .search-result-item {
-      display: block;
-      padding: .85rem 1.25rem;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(42,45,62,.5);
-      transition: background .15s;
-    }
-
-    .search-result:hover, .search-result:focus,
-    .search-result-item:hover, .search-result-item:focus { background: var(--surface2); }
-    .search-result-title { font-weight: 600; color: var(--text); font-size: .9rem; }
-    .search-result-meta { font-size: .75rem; color: var(--muted); margin-top: .15rem; }
-    .search-result-excerpt { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
-    .search-result-cat {
+    .cmd-kbd-hint {
       font-family: 'JetBrains Mono', monospace;
       font-size: .68rem;
-      padding: .1rem .4rem;
-      border-radius: 99px;
-      border: 1px solid var(--violet-dim);
-      color: var(--violet);
-      margin-left: .4rem;
+      color: var(--border);
+      flex-shrink: 0;
+      user-select: none;
     }
-    .search-result-mark { background: var(--violet-glow); color: var(--violet); border-radius: 2px; }
-    .search-empty { padding: 2rem; text-align: center; color: var(--muted); font-size: .85rem; }
-    .search-no-results { padding: 2rem; text-align: center; color: var(--muted); font-size: .85rem; }
+
+    /* ── Results ── */
+    .cmd-results {
+      max-height: 380px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .cmd-item {
+      border-bottom: 1px solid rgba(42,45,62,.4);
+      transition: background .1s;
+    }
+
+    .cmd-item:last-child { border-bottom: none; }
+    .cmd-item--selected { background: rgba(124,92,252,.08); }
+
+    .cmd-item-link {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .75rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .cmd-item-index {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      color: var(--border);
+      width: 18px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .cmd-item--selected .cmd-item-index { color: var(--violet); }
+
+    .cmd-item-body { flex: 1; min-width: 0; }
+
+    .cmd-item-title {
+      display: block;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cmd-item-meta {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-top: .2rem;
+    }
+
+    .cmd-item-cat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem;
+      padding: .1rem .45rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .cmd-item--selected .cmd-item-cat { border-color: var(--violet-dim); color: var(--violet); }
+
+    .cmd-item-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem;
+      color: var(--border);
+    }
+
+    .cmd-item-chevron {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem;
+      color: var(--border);
+      flex-shrink: 0;
+      opacity: 0;
+      transition: opacity .1s;
+    }
+
+    .cmd-item--selected .cmd-item-chevron { opacity: 1; color: var(--violet); }
+
+    .cmd-mark {
+      background: rgba(124,92,252,.18);
+      color: var(--violet);
+      border-radius: 2px;
+      font-weight: 700;
+    }
+
+    .cmd-empty {
+      padding: 3rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .cmd-empty strong { color: var(--text); }
+
+    /* ── Footer ── */
+    .cmd-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .6rem 1.25rem;
+      border-top: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem;
+      color: var(--border);
+    }
+
+    .cmd-shortcuts { display: flex; align-items: center; gap: .25rem; }
+
+    .cmd-shortcuts kbd {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 20px;
+      padding: 0 5px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem;
+      color: var(--muted);
+      background: var(--surface2);
+    }
 
     .sr-only {
       position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
