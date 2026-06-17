@@ -1,0 +1,393 @@
+{{ define "main" }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Outfit:wght@300;400;500&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ "css/selfhosting-guide.css" | relURL }}" />
+
+<div class="selfhosting-guide">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="bp-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="crosshair ch-tl"></div>
+  <div class="crosshair ch-tr"></div>
+  <div class="crosshair ch-bl"></div>
+  <div class="crosshair ch-br"></div>
+
+  <div class="hero-inner">
+    <div class="arch-diagram" id="arch-diagram" aria-hidden="true"></div>
+
+    <div class="hero-eyebrow">
+      <span class="eyebrow-dot"></span>
+      Beginner Guide · Infrastructure Series
+    </div>
+
+    <h1><span>Self-Hosting</span><br>Starter Guide</h1>
+    <p class="hero-sub">
+      Your own hardware. Your own services. No subscriptions, no data handed to strangers, no one else's uptime to depend on. Here's how to start.
+    </p>
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="meta-val">7</div>
+        <div class="meta-label">Core Steps</div>
+      </div>
+      <div class="meta-sep"></div>
+      <div class="meta-item">
+        <div class="meta-val">$0</div>
+        <div class="meta-label">Minimum Cost</div>
+      </div>
+      <div class="meta-sep"></div>
+      <div class="meta-item">
+        <div class="meta-val">1-2h</div>
+        <div class="meta-label">Setup Time</div>
+      </div>
+      <div class="meta-sep"></div>
+      <div class="meta-item">
+        <div class="meta-val">Linux</div>
+        <div class="meta-label">Recommended OS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="page-wrap">
+  <!-- Author + meta bar -->
+  <div style="max-width:1060px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;font-family:var(--sh-mono);font-size:0.72rem;color:var(--sh-muted);padding:0;">
+    <span>By <strong style="color:var(--sh-text)">{{ .Site.Params.author }}</strong></span>
+    <span>{{ .Date.Format "2 January 2006" }}</span>
+    <span>{{ with .Params.readingTime }}{{ . }}{{ else }}{{ .ReadingTime }}{{ end }} min read</span>
+    {{ with .Lastmod }}<span>Updated {{ .Format "2 January 2006" }}</span>{{ end }}
+  </div>
+
+  <div class="content-layout">
+    <!-- PROGRESS TRACKER -->
+    <aside class="tracker">
+      <div class="tracker-label">Progress</div>
+      <nav class="tracker-steps" id="tracker-steps">
+        <a class="tracker-step" href="#what-is-selfhosting">
+          <div class="t-num">01</div>
+          <div class="t-label">What Is Self-Hosting</div>
+        </a>
+        <a class="tracker-step" href="#hardware">
+          <div class="t-num">02</div>
+          <div class="t-label">Choose Hardware</div>
+        </a>
+        <a class="tracker-step" href="#os">
+          <div class="t-num">03</div>
+          <div class="t-label">Install the OS</div>
+        </a>
+        <a class="tracker-step" href="#docker">
+          <div class="t-num">04</div>
+          <div class="t-label">Docker Basics</div>
+        </a>
+        <a class="tracker-step" href="#first-services">
+          <div class="t-num">05</div>
+          <div class="t-label">First Services</div>
+        </a>
+        <a class="tracker-step" href="#networking">
+          <div class="t-num">06</div>
+          <div class="t-label">Networking & Access</div>
+        </a>
+        <a class="tracker-step" href="#next-steps">
+          <div class="t-num">07</div>
+          <div class="t-label">What Comes Next</div>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ARTICLE -->
+    <article class="article">
+
+      <!-- 01 -->
+      <section class="section" id="what-is-selfhosting">
+        <div class="section-header">
+          <div class="step-badge">01</div>
+          <div class="section-meta">
+            <div class="section-eyebrow">Foundation</div>
+            <h2>What Is Self-Hosting</h2>
+          </div>
+        </div>
+        <p>Self-hosting means running software on hardware you control — a spare laptop, a Raspberry Pi, an old desktop — instead of relying on a cloud service someone else operates. The software does the same things: file storage, media streaming, password management, home automation. The difference is the machine running it is yours.</p>
+        <p>The appeal is concrete. You own your data. You pay once for hardware, not monthly for a subscription. Services don't disappear because a company gets acquired. And you learn infrastructure skills that transfer everywhere — Linux, networking, containers, security.</p>
+        <div class="blueprint-box">
+          <div class="bb-inner">
+            <div class="bb-label">The Model</div>
+            <div class="bb-title">Local server → services → your devices</div>
+            <p class="bb-text">A machine on your network runs containerized services. Those services are accessible from your phone, laptop, or TV — either locally or through a secure tunnel you control. You are the only cloud.</p>
+          </div>
+        </div>
+        <div class="callout green">
+          <div class="callout-head">Who this is for</div>
+          <p>Anyone comfortable with a terminal. You don't need to be a sysadmin. If you can follow instructions, run commands, and tolerate occasional troubleshooting, you can self-host. Most setups, once running, require almost no maintenance.</p>
+        </div>
+      </section>
+
+      <div class="section-div"></div>
+
+      <!-- 02 -->
+      <section class="section" id="hardware">
+        <div class="section-header">
+          <div class="step-badge">02</div>
+          <div class="section-meta">
+            <div class="section-eyebrow">Infrastructure</div>
+            <h2>Choose Your Hardware</h2>
+          </div>
+        </div>
+        <p>The barrier to entry is lower than people assume. Anything that runs Linux can be a server. The right choice depends on what you want to run, how much power consumption matters, and what you already have available.</p>
+        <div class="compare-row">
+          <div class="cr-card">
+            <div class="cr-label">Entry Level</div>
+            <div class="cr-val">Raspberry Pi</div>
+            <p class="cr-note">~$35-80. Low power draw (~5W). ARM architecture. Great for lightweight services — DNS, dashboards, small apps. Struggles with transcoding.</p>
+          </div>
+          <div class="cr-card">
+            <div class="cr-label">Mid Range</div>
+            <div class="cr-val">Old Laptop / PC</div>
+            <p class="cr-note">$0 if you have one. x86_64 — full compatibility, no ARM surprises. Higher power draw. Best all-around starter hardware.</p>
+          </div>
+          <div class="cr-card">
+            <div class="cr-label">Serious</div>
+            <div class="cr-val">Mini PC / NAS</div>
+            <p class="cr-note">$150-400. Intel N100/N200 chips sip power but run everything. Dedicated NAS units add RAID. For when you're committed.</p>
+          </div>
+        </div>
+        <div class="callout yellow">
+          <div class="callout-head">Start with what you have</div>
+          <p>The most common mistake is buying new hardware before knowing what you actually want to run. Use an old laptop or a spare machine first. If you're still running services three months later, upgrade with intention.</p>
+        </div>
+        <h3>Storage Considerations</h3>
+        <p>For the OS and containers, a small SSD is ideal — 60GB minimum, 120GB comfortable. For media or file storage, separate spinning HDDs are cost-effective. RAID is not a backup — it's redundancy. Plan both separately.</p>
+      </section>
+
+      <div class="section-div"></div>
+
+      <!-- 03 -->
+      <section class="section" id="os">
+        <div class="section-header">
+          <div class="step-badge">03</div>
+          <div class="section-meta">
+            <div class="section-eyebrow">Operating System</div>
+            <h2>Install the OS</h2>
+          </div>
+        </div>
+        <p>For a home server, you want a stable, headless Linux installation — no desktop environment, just the OS and SSH access. The two most common choices for beginners are Ubuntu Server and Debian.</p>
+        <div class="service-grid">
+          <div class="service-card">
+            <div class="sc-top"><div class="sc-name">Ubuntu Server</div><span class="sc-tag tag-free">Free</span></div>
+            <p class="sc-desc">LTS releases every 2 years with 5-year support. Largest community, most tutorials written against it. Best default for beginners. Slight Canonical telemetry you can disable.</p>
+          </div>
+          <div class="service-card">
+            <div class="sc-top"><div class="sc-name">Debian Stable</div><span class="sc-tag tag-os">FOSS</span></div>
+            <p class="sc-desc">Slower package cycle but rock solid. No corporate backing, pure community. Slightly more manual setup. Good choice if you care about FOSS lineage or are already familiar with Debian-based systems.</p>
+          </div>
+          <div class="service-card">
+            <div class="sc-top"><div class="sc-name">Proxmox VE</div><span class="sc-tag tag-free">Free</span></div>
+            <p class="sc-desc">Hypervisor for running multiple VMs and LXC containers on one machine. Overkill for day one but powerful once you want isolation between services. Web UI for management.</p>
+          </div>
+          <div class="service-card">
+            <div class="sc-top"><div class="sc-name">Arch / EndeavourOS</div><span class="sc-tag tag-os">FOSS</span></div>
+            <p class="sc-desc">Rolling release — latest everything. Higher maintenance but AUR access is real. Good choice if your workstation is already Arch-based and you want a consistent environment.</p>
+          </div>
+        </div>
+        <h3>Initial Server Setup</h3>
+        <div class="build-steps">
+          <div class="build-step"><div class="bs-num">1</div><div class="bs-body"><div class="bs-title">Flash and boot the ISO</div><p class="bs-desc">Use Balena Etcher or <code>dd</code> to write the ISO to a USB drive. Boot from it and follow the installer — hostname, user account, SSH enabled, no desktop.</p></div></div>
+          <div class="build-step"><div class="bs-num">2</div><div class="bs-body"><div class="bs-title">Set a static IP</div><p class="bs-desc">Assign a fixed local IP via your router's DHCP reservation (preferred) or configure it in <code>/etc/netplan/</code> directly. Your server's address should never change.</p></div></div>
+          <div class="build-step"><div class="bs-num">3</div><div class="bs-body"><div class="bs-title">Harden SSH</div><p class="bs-desc">Copy your public key to the server, then disable password authentication in <code>/etc/ssh/sshd_config</code>. Set <code>PasswordAuthentication no</code>. Restart SSH. Now you can only log in with your key.</p></div></div>
+          <div class="build-step"><div class="bs-num">4</div><div class="bs-body"><div class="bs-title">Update and set up automatic security patches</div><p class="bs-desc">Run <code>apt update && apt upgrade</code>, then install <code>unattended-upgrades</code>. Security patches will apply themselves. You don't want to babysit this.</p></div></div>
+        </div>
+        <div class="code-block">
+          <div class="code-bar"><div class="code-dots"><div class="code-dot dot-r"></div><div class="code-dot dot-y"></div><div class="code-dot dot-g"></div></div><div class="code-lang">bash — initial hardening</div></div>
+          <div class="code-body"><span class="c"># Copy your SSH key from your local machine first</span>
+ssh-copy-id user@<span class="var">SERVER_IP</span>
+
+<span class="c"># On the server — disable password auth</span>
+<span class="kw">sudo</span> sed -i <span class="str">'s/#PasswordAuthentication yes/PasswordAuthentication no/'</span> \
+  /etc/ssh/sshd_config
+<span class="kw">sudo</span> systemctl restart sshd
+
+<span class="c"># Auto security updates</span>
+<span class="kw">sudo</span> apt install -y unattended-upgrades
+<span class="kw">sudo</span> dpkg-reconfigure --priority=low unattended-upgrades</div>
+        </div>
+      </section>
+
+      <div class="section-div"></div>
+
+      <!-- 04 -->
+      <section class="section" id="docker">
+        <div class="section-header">
+          <div class="step-badge">04</div>
+          <div class="section-meta">
+            <div class="section-eyebrow">Containers</div>
+            <h2>Docker Basics</h2>
+          </div>
+        </div>
+        <p>Docker is the standard way to run self-hosted services. Each service runs in its own isolated container — its own filesystem, its own dependencies, no conflicts with anything else on the system. You can add, remove, update, or break a service without touching anything around it.</p>
+        <p>Docker Compose is the layer on top: instead of running long <code>docker run</code> commands, you write a <code>compose.yml</code> file that describes all your services at once. One command brings everything up.</p>
+        <h3>Install Docker</h3>
+        <div class="code-block">
+          <div class="code-bar"><div class="code-dots"><div class="code-dot dot-r"></div><div class="code-dot dot-y"></div><div class="code-dot dot-g"></div></div><div class="code-lang">bash — Docker install (Debian/Ubuntu)</div></div>
+          <div class="code-body"><span class="c"># Official install script — quickest for a home server</span>
+curl -fsSL https://get.docker.com | sh
+
+<span class="c"># Add your user to the docker group (no sudo required)</span>
+<span class="kw">sudo</span> usermod -aG docker <span class="var">$USER</span>
+newgrp docker
+
+<span class="c"># Verify</span>
+docker run hello-world</div>
+        </div>
+        <h3>Your First Compose File</h3>
+        <p>Create a directory for each service, put a <code>compose.yml</code> inside it, and bring it up with <code>docker compose up -d</code>. Here's the structure using Portainer — a web dashboard for managing all your containers.</p>
+        <div class="code-block">
+          <div class="code-bar"><div class="code-dots"><div class="code-dot dot-r"></div><div class="code-dot dot-y"></div><div class="code-dot dot-g"></div></div><div class="code-lang">yaml — compose.yml (Portainer)</div></div>
+          <div class="code-body"><span class="kw">services</span>:
+  <span class="kw">portainer</span>:
+    <span class="kw">image</span>: <span class="str">portainer/portainer-ce:latest</span>
+    <span class="kw">container_name</span>: <span class="str">portainer</span>
+    <span class="kw">restart</span>: <span class="str">unless-stopped</span>
+    <span class="kw">ports</span>:
+      - <span class="str">"9000:9000"</span>
+    <span class="kw">volumes</span>:
+      - <span class="str">/var/run/docker.sock:/var/run/docker.sock</span>
+      - <span class="str">portainer_data:/data</span>
+
+<span class="kw">volumes</span>:
+  <span class="kw">portainer_data</span>:</div>
+        </div>
+        <div class="code-block">
+          <div class="code-bar"><div class="code-dots"><div class="code-dot dot-r"></div><div class="code-dot dot-y"></div><div class="code-dot dot-g"></div></div><div class="code-lang">bash — bring it up</div></div>
+          <div class="code-body"><span class="kw">mkdir</span> -p ~/docker/portainer && <span class="kw">cd</span> ~/docker/portainer
+<span class="c"># paste the compose.yml here, then:</span>
+docker compose up -d
+
+<span class="c"># Check it's running</span>
+docker compose ps
+
+<span class="c"># Open in browser: http://SERVER_IP:9000</span></div>
+        </div>
+        <div class="callout">
+          <div class="callout-head">Essential Docker Commands</div>
+          <p><code>docker compose up -d</code> — start services in background &nbsp;·&nbsp; <code>docker compose down</code> — stop &nbsp;·&nbsp; <code>docker compose pull</code> — update images &nbsp;·&nbsp; <code>docker compose logs -f</code> — follow logs &nbsp;·&nbsp; <code>docker ps</code> — list running containers</p>
+        </div>
+      </section>
+
+      <div class="section-div"></div>
+
+      <!-- 05 -->
+      <section class="section" id="first-services">
+        <div class="section-header">
+          <div class="step-badge">05</div>
+          <div class="section-meta">
+            <div class="section-eyebrow">Services</div>
+            <h2>Your First Services</h2>
+          </div>
+        </div>
+        <p>Start with services that have obvious, immediate value. Running something you actually use daily is the fastest way to understand whether self-hosting is for you — and it builds confidence for more complex setups later.</p>
+        <div class="service-grid">
+          <div class="service-card"><div class="sc-top"><div class="sc-name">Jellyfin</div><span class="sc-tag tag-free">Free / OSS</span></div><p class="sc-desc">Media server. Replaces Plex, no paywall, no account required. Works with Nuvio via the Jellyfin addon — your own streaming service for files you already have.</p></div>
+          <div class="service-card"><div class="sc-top"><div class="sc-name">Vaultwarden</div><span class="sc-tag tag-os">FOSS</span></div><p class="sc-desc">Self-hosted Bitwarden-compatible password manager. Uses the official Bitwarden clients. Your passwords, your server. Immediate practical value.</p></div>
+          <div class="service-card"><div class="sc-top"><div class="sc-name">Nextcloud</div><span class="sc-tag tag-os">FOSS</span></div><p class="sc-desc">File sync and collaboration. Replaces Google Drive / Dropbox. Syncs across devices with desktop and mobile clients. Also does calendars, contacts, and notes.</p></div>
+          <div class="service-card"><div class="sc-top"><div class="sc-name">Pi-hole / AdGuard Home</div><span class="sc-tag tag-free">Free</span></div><p class="sc-desc">Network-wide DNS-level ad and tracker blocking. Set your router's DNS to point here. Blocks ads across every device on your network, including phones and smart TVs.</p></div>
+          <div class="service-card"><div class="sc-top"><div class="sc-name">Comet</div><span class="sc-tag tag-os">FOSS</span></div><p class="sc-desc">Self-host your own Stremio/Nuvio torrent scraper. No rate limits, no shared infrastructure. Add your debrid key and point AIOStreams at your own instance.</p></div>
+          <div class="service-card"><div class="sc-top"><div class="sc-name">Homepage</div><span class="sc-tag tag-docker">Docker</span></div><p class="sc-desc">Dashboard for all your self-hosted services. One page with live status indicators, links, and service widgets. The first thing you open, the thing that tells you everything is up.</p></div>
+        </div>
+        <div class="status-row">
+          <div class="status-line"><span class="status-dot sd-green"></span> jellyfin &nbsp;·&nbsp; running on :8096</div>
+          <div class="status-line"><span class="status-dot sd-green"></span> vaultwarden &nbsp;·&nbsp; running on :8080</div>
+          <div class="status-line"><span class="status-dot sd-green"></span> adguardhome &nbsp;·&nbsp; running on :3000 (UI) / :53 (DNS)</div>
+          <div class="status-line"><span class="status-dot sd-blue"></span>  comet &nbsp;·&nbsp; running on :8888</div>
+          <div class="status-line"><span class="status-dot sd-green"></span> homepage &nbsp;·&nbsp; running on :3001</div>
+        </div>
+      </section>
+
+      <div class="section-div"></div>
+
+      <!-- 06 -->
+      <section class="section" id="networking">
+        <div class="section-header">
+          <div class="step-badge">06</div>
+          <div class="section-meta">
+            <div class="section-eyebrow">Access</div>
+            <h2>Networking & Remote Access</h2>
+          </div>
+        </div>
+        <p>Services running on your home network are only accessible from inside it by default. If you want to reach Jellyfin or Vaultwarden from outside — from your phone on mobile data, from work — you need a way to expose them safely.</p>
+        <h3>Option A: Tailscale (Recommended for Beginners)</h3>
+        <p>Tailscale creates a private mesh VPN across all your devices. Install it on your server and your phone. They join the same private network. You access your services by their Tailscale IP from anywhere, without opening any ports on your router.</p>
+        <div class="code-block">
+          <div class="code-bar"><div class="code-dots"><div class="code-dot dot-r"></div><div class="code-dot dot-y"></div><div class="code-dot dot-g"></div></div><div class="code-lang">bash — Tailscale install</div></div>
+          <div class="code-body"><span class="kw">curl</span> -fsSL https://tailscale.com/install.sh | sh
+<span class="kw">sudo</span> tailscale up
+
+<span class="c"># Your server now has a stable Tailscale IP (100.x.x.x)</span>
+<span class="c"># Access services from anywhere: http://100.x.x.x:8096</span></div>
+        </div>
+        <div class="callout green">
+          <div class="callout-head">Zero port forwarding needed</div>
+          <p>Tailscale punches through NAT without you touching your router config. For a home server, this is the cleanest, safest approach. The free plan covers 3 users and 100 devices — more than enough.</p>
+        </div>
+        <h3>Option B: Reverse Proxy + Domain</h3>
+        <p>If you want clean URLs like <code>jellyfin.yourdomain.com</code> instead of IP:port, run a reverse proxy. <strong>Caddy</strong> is the easiest — it handles HTTPS certificates automatically. You'll also need a domain pointed at your home IP, and either a dynamic DNS service or a static IP from your ISP.</p>
+        <div class="code-block">
+          <div class="code-bar"><div class="code-dots"><div class="code-dot dot-r"></div><div class="code-dot dot-y"></div><div class="code-dot dot-g"></div></div><div class="code-lang">caddyfile — reverse proxy config</div></div>
+          <div class="code-body">jellyfin.yourdomain.com {
+    reverse_proxy localhost:<span class="num">8096</span>
+}
+
+vault.yourdomain.com {
+    reverse_proxy localhost:<span class="num">8080</span>
+}
+
+<span class="c"># Caddy handles TLS automatically — no certbot needed</span></div>
+        </div>
+        <div class="callout yellow">
+          <div class="callout-head">Security note</div>
+          <p>If exposing services to the public internet, never expose SSH directly. Use Tailscale for SSH access, keep only 80/443 open on your router for web services, and always use strong passwords or disable password auth entirely on anything public-facing.</p>
+        </div>
+      </section>
+
+      <div class="section-div"></div>
+
+      <!-- 07 -->
+      <section class="section" id="next-steps">
+        <div class="section-header">
+          <div class="step-badge">07</div>
+          <div class="section-meta">
+            <div class="section-eyebrow">Going Further</div>
+            <h2>What Comes Next</h2>
+          </div>
+        </div>
+        <p>Once your first services are running and you've lived with them for a few weeks, you'll have a much clearer picture of what you actually want. These are the natural next moves, roughly in order of complexity.</p>
+        <div class="checklist">
+          <div class="check-item"><div class="check-box">✓</div><span><strong style="color:var(--sh-text)">Backups</strong> — the most important thing you're probably skipping. Use the 3-2-1 rule: 3 copies, 2 different media, 1 offsite. Borgbackup or Restic for encrypted local + remote backups.</span></div>
+          <div class="check-item"><div class="check-box">✓</div><span><strong style="color:var(--sh-text)">Monitoring</strong> — Uptime Kuma gives you a dashboard showing every service's uptime. Alerts you when something goes down. Grafana + Prometheus for full metrics if you want to go deeper.</span></div>
+          <div class="check-item"><div class="check-box">✓</div><span><strong style="color:var(--sh-text)">Automatic updates</strong> — Watchtower pulls updated Docker images and restarts containers automatically. Set it to notify you rather than auto-update if you prefer control.</span></div>
+          <div class="check-item"><div class="check-box">✓</div><span><strong style="color:var(--sh-text)">Immich</strong> — self-hosted Google Photos replacement. Automatic phone backup, face recognition, search. One of the most actively developed self-hosted apps right now.</span></div>
+          <div class="check-item"><div class="check-box">✓</div><span><strong style="color:var(--sh-text)">Arr stack</strong> — Sonarr, Radarr, Prowlarr, and qBittorrent work together to automate finding, downloading, and organizing media. Pairs with Jellyfin to give you a fully automated media library.</span></div>
+          <div class="check-item"><div class="check-box">✓</div><span><strong style="color:var(--sh-text)">Proxmox</strong> — once you want to run multiple isolated environments, Proxmox as a hypervisor lets you carve your hardware into VMs and LXC containers cleanly.</span></div>
+        </div>
+        <div class="blueprint-box" style="margin-top: 2rem;">
+          <div class="bb-inner">
+            <div class="bb-label">The Mindset</div>
+            <div class="bb-title">Break things in staging, not in production.</div>
+            <p class="bb-text">Run experiments in a VM or a separate container stack before touching your main services. Keep your backups current. Document what you've changed. Self-hosting is an incremental skill — every break is a lesson you only pay once.</p>
+          </div>
+        </div>
+      </section>
+
+    </article>
+  </div>
+</div>
+
+<div class="guide-footer">
+  Self-Hosting Starter Guide &nbsp;·&nbsp; Infrastructure Series &nbsp;·&nbsp; For the curious and the control-obsessed
+</div>
+
+</div>
+<script src="{{ "js/selfhosting-guide.js" | relURL }}"></script>
+{{ end }}
