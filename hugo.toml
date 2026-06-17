@@ -28,6 +28,10 @@ hasCJKLanguage = false
   # Features
   searchEnabled = true
   darkModeToggle = true
+  # Analytics — Umami (privacy-first, self-hosted)
+  # Set umamiSiteId and umamiScriptUrl to enable
+  umamiSiteId = ""
+  umamiScriptUrl = "https://umami.your-instance.com/script.js"
 
 [menu]
   [[menu.main]]
@@ -43,13 +47,17 @@ hasCJKLanguage = false
     url = "/categories/"
     weight = 3
   [[menu.main]]
+    name = "Q&A"
+    url = "/qa/"
+    weight = 4
+  [[menu.main]]
     name = "About"
     url = "/pages/about/"
-    weight = 4
+    weight = 5
   [[menu.main]]
     name = "Support"
     url = "/support/"
-    weight = 5
+    weight = 6
 
 [taxonomies]
   category = "categories"

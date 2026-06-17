@@ -1,0 +1,41 @@
+{{ define "main" }}
+<div class="container" style="max-width:780px;margin:0 auto;padding:2rem 1.25rem 5rem;">
+
+  <header style="margin-bottom:2.5rem;padding-top:2rem;">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--violet);margin-bottom:0.5rem;">Community</p>
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:0.75rem;">{{ .Title }}</h1>
+    <p style="font-size:1.05rem;color:var(--muted);">{{ .Description }}</p>
+  </header>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:2rem;">
+    <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1rem;">This is where you can ask questions, request guides, share solutions, and discuss workflows. Comments are powered by <strong>GitHub Discussions</strong> — you'll need a GitHub account to participate.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;font-size:0.82rem;">
+      <span style="display:flex;align-items:center;gap:0.4rem;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4ADE80;box-shadow:0 0 6px #4ADE80;"></span> Guide requests welcome</span>
+      <span style="display:flex;align-items:center;gap:0.4rem;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--violet);box-shadow:0 0 6px var(--violet);"></span> Troubleshooting help</span>
+      <span style="display:flex;align-items:center;gap:0.4rem;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#FBBF24;box-shadow:0 0 6px #FBBF24;"></span> Workflow discussions</span>
+    </div>
+  </div>
+
+  <!-- Giscus embed -->
+  <script src="https://giscus.app/client.js"
+    data-repo="Silverslyth/ember-blog"
+    data-repo-id="R_kg_DOXXXXXXX"
+    data-category="Q&A"
+    data-category-id="DIC_kwDOXXXXXXX"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="dark"
+    data-lang="en"
+    crossorigin="anonymous"
+    async>
+  </script>
+
+  <noscript>
+    <p style="color:var(--muted);text-align:center;padding:2rem;">JavaScript is required to load the discussion. You can also <a href="https://github.com/Silverslyth/ember-blog/discussions" style="color:var(--violet);">browse discussions on GitHub</a>.</p>
+  </noscript>
+
+</div>
+{{ end }}

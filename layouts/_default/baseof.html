@@ -20,6 +20,14 @@
     document.documentElement.setAttribute('data-theme','dark');
   </script>
 
+  {{/* Umami Analytics — privacy-first, no cookies */}}
+  {{ if .Site.Params.umamiSiteId }}
+  <script async defer
+    data-website-id="{{ .Site.Params.umamiSiteId }}"
+    src="{{ .Site.Params.umamiScriptUrl | default "https://umami.your-instance.com/script.js" }}">
+  </script>
+  {{ end }}
+
   {{/* Fonts */}}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -263,14 +271,14 @@
     /* ── ARCHIVE NAV (homepage) ── */
     .archive-nav {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: .75rem;
       margin-bottom: 2.5rem;
     }
 
-    .archive-nav-card {
-      display: flex;
-      flex-direction: column;
+    @media (max-width: 500px) {
+      .archive-nav { grid-template-columns: 1fr 1fr; }
+    }
       align-items: center;
       gap: .35rem;
       padding: 1.25rem 1rem;
@@ -291,27 +299,27 @@
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 600;
       font-size: .9rem;
-      color: var(--text);
-    }
-    .archive-nav-desc {
-      font-size: .75rem;
-      color: var(--muted);
+      .archive-nav {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: .75rem;
+        margin-bottom: 2.5rem;
+      }
+
+      @media (max-width: 500px) {
+        .archive-nav { grid-template-columns: 1fr 1fr; }
+      }
+
+    /* ── POST CARDS ── */
+    .archive-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .75rem;
+      margin-bottom: 2.5rem;
     }
 
     @media (max-width: 500px) {
-      .archive-nav { grid-template-columns: 1fr; }
-    }
-
-    /* ── POST CARDS ── */
-    .posts-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: .75rem;
-      margin-top: 1rem;
-    }
-
-    @media (min-width: 640px) {
-      .posts-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+      .archive-nav { grid-template-columns: 1fr 1fr; }
     }
 
     .post-card {
