@@ -55,7 +55,7 @@ hasCJKLanguage = false
     url = "/pages/about/"
     weight = 5
   [[menu.main]]
-    name = "Support"
+    name = "Ko-fi"
     url = "/support/"
     weight = 6
 
